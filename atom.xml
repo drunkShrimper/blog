@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://drunkShrimper.github.io/blog/"/>
-  <updated>2019-09-11T15:40:30.468Z</updated>
+  <updated>2019-09-12T04:31:50.660Z</updated>
   <id>http://drunkShrimper.github.io/blog/</id>
   
   <author>
@@ -18,12 +18,20 @@
   
   <entry>
     <title>test</title>
-    <link href="http://drunkShrimper.github.io/blog/2019/09/11/test/"/>
-    <id>http://drunkShrimper.github.io/blog/2019/09/11/test/</id>
-    <published>2019-09-11T15:40:30.000Z</published>
-    <updated>2019-09-11T15:40:30.468Z</updated>
+    <link href="http://drunkShrimper.github.io/blog/2019/09/12/test/"/>
+    <id>http://drunkShrimper.github.io/blog/2019/09/12/test/</id>
+    <published>2019-09-12T04:22:34.000Z</published>
+    <updated>2019-09-12T04:31:50.660Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="http://baidu.com" target="_blank" rel="noopener">百度</a></p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;http://baidu.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;百度&lt;/a&gt;&lt;/p&gt;
+
+      
     
     </summary>
     
@@ -36,16 +44,15 @@
     <link href="http://drunkShrimper.github.io/blog/2019/09/11/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
     <id>http://drunkShrimper.github.io/blog/2019/09/11/Markdown基本语法/</id>
     <published>2019-09-11T14:36:36.000Z</published>
-    <updated>2019-09-11T14:37:12.669Z</updated>
+    <updated>2019-09-12T05:12:49.164Z</updated>
     
-    <content type="html"><![CDATA[<p>TODO</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h1><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><h1 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h1><p>段落的换行是使用两个以上空格加上回车。<br>新的段落</p><p>或者使用空出一行的方式（推荐）。</p><h1 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h1><p><em>斜体1</em><br><em>斜体2</em><br><strong>粗体1</strong><br><strong>粗体2</strong><br><strong><em>斜粗体1</em></strong><br><strong><em>斜粗体2</em></strong><br><del>删除线</del><br><u>下划线</u></p><h1 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h1><p>分割线有多种写法</p><hr><hr><hr><hr><hr><h1 id="脚注"><a href="#脚注" class="headerlink" title="脚注"></a>脚注</h1><p>hexo需要<a href="https://github.com/LouisBarranqueiro/hexo-footnotes" target="_blank" rel="noopener">安装插件</a>才能使用脚注</p><p>因为页面布局问题，脚注的效果并不是很好</p><p>这是一个脚注1<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>  </p><p>生成一个脚注2<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>  </p><p>生成一个脚注3<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup></p><h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h2><p>无序列表有三种写法  </p><ul><li>第一项</li><li>第二项</li><li>第三项 </li></ul><ul><li>第一项</li><li>第二项</li><li>第三项</li></ul><ul><li>表项1</li><li>表项2</li><li>表项3</li></ul><h2 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h2><ol><li>表项1</li><li>表项2</li><li>表项3</li></ol><h2 id="列表嵌套"><a href="#列表嵌套" class="headerlink" title="列表嵌套"></a>列表嵌套</h2><p>列表嵌套只需在子列表中的选项添加四个空格即可：  </p><ol><li>表项1<ul><li>子表项</li><li>子表项</li></ul></li><li>表项2<ol><li>子表项</li><li>子表项</li></ol></li></ol><h1 id="区块"><a href="#区块" class="headerlink" title="区块"></a>区块</h1><blockquote><p>区块效果</p><blockquote><p>区块效果</p><blockquote><p>区块效果</p></blockquote></blockquote></blockquote><h2 id="在列表中使用区块-amp-在区块中使用列表"><a href="#在列表中使用区块-amp-在区块中使用列表" class="headerlink" title="在列表中使用区块&amp;在区块中使用列表"></a>在列表中使用区块&amp;在区块中使用列表</h2><ul><li>表项<blockquote><p>区块</p><pre><code>1. 表项2. 表项</code></pre><p>区块</p><pre><code>* 表项* 表项</code></pre><blockquote><p>区块</p></blockquote></blockquote></li><li>表项</li><li>表项</li></ul><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="段落代码"><a href="#段落代码" class="headerlink" title="段落代码"></a>段落代码</h2><p>如果是段落上的一个函数或片段的代码可以用反引号把它包起来（`）</p><p><code>print()</code> 函数的使用</p><h2 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h2><p>代码区块使用 4 个空格或者一个制表符（Tab 键）。  </p><pre><code>public void setEmpname(String empname){    this.empname=empname;}public void setBonus(Double bonus){    this.bonus=bonus;}</code></pre><p>可以用 ``` 包裹一段代码，并指定一种语言（这样可以语法高亮，也可以不指定）：  </p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEmpname</span><span class="params">(String empname)</span></span>&#123;</span><br><span class="line"><span class="keyword">this</span>.empname=empname;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBonus</span><span class="params">(Double bonus)</span></span>&#123;</span><br><span class="line"><span class="keyword">this</span>.bonus=bonus;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">'RUNOOB'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p>注意放在脚注下的内容是无效的，所以变量要写在脚注之前<br><a href="https://www.runoob.com" target="_blank" rel="noopener">Runoob</a><br><a href="http://www.baidu.com" target="_blank" rel="noopener">百度</a><br><a href="https://www.runoob.com" target="_blank" rel="noopener">https://www.runoob.com</a></p><h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><p>hexo不建议使用Markdown的<code>![]()</code>方式引用图片，而是使用了<a href="https://hexo.io/zh-cn/docs/asset-folders" target="_blank" rel="noopener">新的方法</a>管理图片</p><img src="/blog/2019/09/11/Markdown基本语法/1.jpg" title="slug">  <p>如果要指定图片的高度与宽度，可以使用普通的 <code>&lt;img&gt;</code> 标签。<br><img src="1.jpg" width="50%"></p><h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><table><thead><tr><th align="left">表头</th><th align="right">表头</th><th align="center">表头</th></tr></thead><tbody><tr><td align="left">单元格</td><td align="right">单元格</td><td align="center">单元格</td></tr><tr><td align="left">单元格</td><td align="right">单元格</td><td align="center">单元格</td></tr></tbody></table><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">这里是 <strong>脚注</strong> 的 <em>内容</em>.</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;">这里是<strong>脚注2</strong>的<em>内容</em>.</span><a href="#fnref:2" rev="footnote"> ↩</a></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span style="display: inline-block; vertical-align: top;">这里填写需要的脚注，一般放在页面最下面</span><a href="#fnref:3" rev="footnote"> ↩</a></li></ol></div></div>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;TODO&lt;/p&gt;
-
+        &lt;h1 id=&quot;标题&quot;&gt;&lt;a href=&quot;#标题&quot; class=&quot;headerlink&quot; title=&quot;标题&quot;&gt;&lt;/a&gt;标题&lt;/h1&gt;&lt;h1 id=&quot;一级标题&quot;&gt;&lt;a href=&quot;#一级标题&quot; class=&quot;headerlink&quot; title=&quot;一级标题&quot;&gt;&lt;/a&gt;一级标题&lt;/h
       
     
     </summary>
