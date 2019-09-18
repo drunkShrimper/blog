@@ -30,7 +30,7 @@
 <meta property="og:description" content="基础知识回顾要了解上面的算法概念，首先要回顾一下这两个基本的数学概念  多项式函数 形如：形如 Pn(x)=a(n)x^n+a(n-1)x^(n-1)+…+a(1)x+a(0)的函数，叫做多项式函数 例如：y=kx+b 就是一个次数是1的多项式函数，y=ax^2+bx+c就是一个次数为2的多项式函数  时间复杂度 这个东西用大白话来讲就是衡量一个算法优劣的最重要指标，例如冒泡算法的时间复杂度是o(">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/PNPNPCNPhard/1.jpg">
-<meta property="og:updated_time" content="2019-09-17T13:00:17.901Z">
+<meta property="og:updated_time" content="2019-09-18T04:51:44.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法理论之p问题、NP问题、NP完全问题与NP难问题">
 <meta name="twitter:description" content="基础知识回顾要了解上面的算法概念，首先要回顾一下这两个基本的数学概念  多项式函数 形如：形如 Pn(x)=a(n)x^n+a(n-1)x^(n-1)+…+a(1)x+a(0)的函数，叫做多项式函数 例如：y=kx+b 就是一个次数是1的多项式函数，y=ax^2+bx+c就是一个次数为2的多项式函数  时间复杂度 这个东西用大白话来讲就是衡量一个算法优劣的最重要指标，例如冒泡算法的时间复杂度是o(">
@@ -210,25 +210,22 @@
 <p>那么啥叫问题的转化呢？我们用最直白的想法来理解就是：要解决一个问题的前提是要解决另一个（或多个）问题，这样我们就可以将原来的问题转化为其他的问题了。就好比解方程组一样，求解出了其中一个未知数，就能够求解下一条方程。</p>
 <p><strong>NPC问题是NP问题的子集。</strong></p>
 <p>很多时候NPC问题是找不到一个多项式时间算法的，更多时候他是一个指数级的算法。</p>
-<h1 id="感觉写的有点烂，最后转载一个大佬的讲解"><a href="#感觉写的有点烂，最后转载一个大佬的讲解" class="headerlink" title="感觉写的有点烂，最后转载一个大佬的讲解"></a>感觉写的有点烂，最后转载一个<a href="https://blog.csdn.net/qq_29176963/article/details/82776543" target="_blank" rel="noopener">大佬的讲解</a></h1><ol>
-<li><p>P类问题：能在多项式时间内可解的问题。</p>
-</li>
-<li><p>NP类问题：在多项式时间内“可验证”的问题。也就是说，不能判定这个问题到底有没有解，而是猜出一个解来在多项式时间内证明这个解是否正确。即该问题的猜测过程是不确定的，而对其某一个解的验证则能够在多项式时间内完成。P类问题属于NP问题，但NP类问题不一定属于P类问题。</p>
-</li>
-<li><p>NPC问题：存在这样一个NP问题，所有的NP问题都可以约化成它。换句话说，只要解决了这个问题，那么所有的NP问题都解决了。其定义要满足2个条件：</p>
-</li>
+<h1 id="感觉写的有点烂，最后转载一个大佬的讲解"><a href="#感觉写的有点烂，最后转载一个大佬的讲解" class="headerlink" title="感觉写的有点烂，最后转载一个大佬的讲解"></a>感觉写的有点烂，最后转载一个<a href="https://blog.csdn.net/qq_29176963/article/details/82776543" target="_blank" rel="noopener">大佬的讲解</a></h1><blockquote>
+<ol>
+<li>P类问题：能在多项式时间内可解的问题。</li>
+<li>NP类问题：在多项式时间内“可验证”的问题。也就是说，不能判定这个问题到底有没有解，而是猜出一个解来在多项式时间内证明这个解是否正确。即该问题的猜测过程是不确定的，而对其某一个解的验证则能够在多项式时间内完成。P类问题属于NP问题，但NP类问题不一定属于P类问题。</li>
+<li>NPC问题：存在这样一个NP问题，所有的NP问题都可以约化成它。换句话说，只要解决了这个问题，那么所有的NP问题都解决了。其定义要满足2个条件：</li>
 </ol>
 <ul>
-<li><p>它是一个NP问题；</p>
-</li>
-<li><p>所有NP问题都能规约到它。</p>
-</li>
+<li>它是一个NP问题；</li>
+<li>所有NP问题都能规约到它。</li>
 </ul>
 <ol start="4">
 <li><p>NP难问题：NP-Hard问题是这样一种问题，它满足NPC问题定义的第二条但不一定要满足第一条（就是说，NP-Hard问题要比 NPC问题的范围广，NP-Hard问题没有限定属于NP），即所有的NP问题都能约化到它，但是他不一定是一个NP问题。NP-Hard问题同样难以找到多项式的算法，但它不列入我们的研究范围，因为它不一定是NP问题。即使NPC问题发现了多项式级的算法，NP-Hard问题有可能仍然无法得到多项式级的算法。事实上，由于NP-Hard放宽了限定条件，它将有可能比所有的NPC问题的时间复杂度更高从而更难以解决。</p>
 <p>以上四个问题之间的关系如下图所示：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/PNPNPCNPhard/1.jpg" alt="Loading..."></p>
 </li>
 </ol>
+</blockquote>
 
         </div>
 
@@ -237,7 +234,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-09-17T13:00:17.901Z" itemprop="dateUpdated">2019-09-17 21:00:17</time>
+    最后更新时间：<time datetime="2019-09-18T04:51:44.533Z" itemprop="dateUpdated">2019-09-18 12:51:44</time>
 </span><br>
 
 
