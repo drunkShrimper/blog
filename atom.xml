@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://drunkShrimper.github.io/blog/"/>
-  <updated>2019-09-18T04:51:44.533Z</updated>
+  <updated>2019-09-24T10:07:07.710Z</updated>
   <id>http://drunkShrimper.github.io/blog/</id>
   
   <author>
@@ -17,22 +17,44 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>算法理论之p问题、NP问题、NP完全问题与NP难问题</title>
-    <link href="http://drunkShrimper.github.io/blog/2019/09/17/%E7%AE%97%E6%B3%95%E7%90%86%E8%AE%BA%E4%B9%8Bp%E9%97%AE%E9%A2%98%E3%80%81NP%E9%97%AE%E9%A2%98%E3%80%81NP%E5%AE%8C%E5%85%A8%E9%97%AE%E9%A2%98%E4%B8%8ENP%E9%9A%BE%E9%97%AE%E9%A2%98/"/>
-    <id>http://drunkShrimper.github.io/blog/2019/09/17/算法理论之p问题、NP问题、NP完全问题与NP难问题/</id>
-    <published>2019-09-17T12:20:44.000Z</published>
-    <updated>2019-09-18T04:51:44.533Z</updated>
+    <title>算法:数的统计问题</title>
+    <link href="http://drunkShrimper.github.io/blog/2019/09/24/%E7%AE%97%E6%B3%95-%E6%95%B0%E7%9A%84%E7%BB%9F%E8%AE%A1%E9%97%AE%E9%A2%98/"/>
+    <id>http://drunkShrimper.github.io/blog/2019/09/24/算法-数的统计问题/</id>
+    <published>2019-09-24T10:03:52.000Z</published>
+    <updated>2019-09-24T10:07:07.710Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="基础知识回顾"><a href="#基础知识回顾" class="headerlink" title="基础知识回顾"></a>基础知识回顾</h1><p>要了解上面的算法概念，首先要回顾一下这两个基本的数学概念</p><ol><li><p>多项式函数</p><p>形如：形如 Pn(x)=a(n)x^n+a(n-1)x^(n-1)+…+a(1)x+a(0)的函数，叫做多项式函数</p><p>例如：y=kx+b 就是一个次数是1的多项式函数，y=ax^2+bx+c就是一个次数为2的多项式函数</p></li><li><p>时间复杂度</p><p>这个东西用大白话来讲就是衡量一个算法优劣的最重要指标，例如冒泡算法的时间复杂度是o(<em>n^2</em>)，其中n是指数据的规模。这里面的<em>n^2</em>就是一个多项式。  </p></li></ol><h1 id="那么什么是p类问题"><a href="#那么什么是p类问题" class="headerlink" title="那么什么是p类问题"></a>那么什么是p类问题</h1><p>例如冒泡算法的时间复杂度是o(<em>n^2</em>)，它是一个多项式时间的算法问题，所以我们将之称为P类问题(P：polynominal，多项式)。</p><h1 id="NP问题的定义"><a href="#NP问题的定义" class="headerlink" title="NP问题的定义"></a>NP问题的定义</h1><p>NP类问题：能在多项式时间内验证得出一个正确解的问题。(NP:Nondeterministic polynominal，非确定性多项式)</p><p><strong>P类问题是NP问题的子集，因为存在多项式时间解法的问题，总能在多项式时间内验证他。</strong></p><p>如何理解NP问题呢？</p><p>我们可以这样想：有一个问题，你不知道是否存在一个多项式算法来解决它，但是你可以通过一次次的猜测（或者说尝试）从而有机会在一个多项式的时间呢找出他的解。这种不确定性就可以称之为N。这样的问题就是NP问题啦。</p><h1 id="NPC问题"><a href="#NPC问题" class="headerlink" title="NPC问题"></a>NPC问题</h1><p>NPC问题:如果所有np问题都能在多项式时间内转化为他，则称该np问题为npc问题(NPC:NP complete又叫NP完全问题)</p><p>那么啥叫问题的转化呢？我们用最直白的想法来理解就是：要解决一个问题的前提是要解决另一个（或多个）问题，这样我们就可以将原来的问题转化为其他的问题了。就好比解方程组一样，求解出了其中一个未知数，就能够求解下一条方程。</p><p><strong>NPC问题是NP问题的子集。</strong></p><p>很多时候NPC问题是找不到一个多项式时间算法的，更多时候他是一个指数级的算法。</p><h1 id="感觉写的有点烂，最后转载一个大佬的讲解"><a href="#感觉写的有点烂，最后转载一个大佬的讲解" class="headerlink" title="感觉写的有点烂，最后转载一个大佬的讲解"></a>感觉写的有点烂，最后转载一个<a href="https://blog.csdn.net/qq_29176963/article/details/82776543" target="_blank" rel="noopener">大佬的讲解</a></h1><blockquote><ol><li>P类问题：能在多项式时间内可解的问题。</li><li>NP类问题：在多项式时间内“可验证”的问题。也就是说，不能判定这个问题到底有没有解，而是猜出一个解来在多项式时间内证明这个解是否正确。即该问题的猜测过程是不确定的，而对其某一个解的验证则能够在多项式时间内完成。P类问题属于NP问题，但NP类问题不一定属于P类问题。</li><li>NPC问题：存在这样一个NP问题，所有的NP问题都可以约化成它。换句话说，只要解决了这个问题，那么所有的NP问题都解决了。其定义要满足2个条件：</li></ol><ul><li>它是一个NP问题；</li><li>所有NP问题都能规约到它。</li></ul><ol start="4"><li><p>NP难问题：NP-Hard问题是这样一种问题，它满足NPC问题定义的第二条但不一定要满足第一条（就是说，NP-Hard问题要比 NPC问题的范围广，NP-Hard问题没有限定属于NP），即所有的NP问题都能约化到它，但是他不一定是一个NP问题。NP-Hard问题同样难以找到多项式的算法，但它不列入我们的研究范围，因为它不一定是NP问题。即使NPC问题发现了多项式级的算法，NP-Hard问题有可能仍然无法得到多项式级的算法。事实上，由于NP-Hard放宽了限定条件，它将有可能比所有的NPC问题的时间复杂度更高从而更难以解决。</p><p>以上四个问题之间的关系如下图所示：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/PNPNPCNPhard/1.jpg" alt="Loading..."></p></li></ol></blockquote>]]></content>
+    <content type="html"><![CDATA[<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><blockquote><p><strong>一本书的页码从自然数1开始顺序编码直到自然数n。书的页码按照通常的习惯编排，每个页码都不含多余的前导数字0。例如第6页用6表示而不是06或006。数字统计问题要求对给定书的总页码，计算出书的全部页码中分别用到多少次数字0,1,2,3,…..9。</strong></p></blockquote><h1 id="解法1：暴力求解"><a href="#解法1：暴力求解" class="headerlink" title="解法1：暴力求解"></a>解法1：暴力求解</h1><p>这个没什么好说的，有编程基础的都会</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">long</span> totalNum[<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> tmp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        tmp = i;</span><br><span class="line">        <span class="keyword">while</span>(tmp)&#123;</span><br><span class="line">            totalNum[tmp%<span class="number">10</span>]+=<span class="number">1</span>;</span><br><span class="line">            tmp/=<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%ld"</span>,totalNum[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="解法2：递归求解"><a href="#解法2：递归求解" class="headerlink" title="解法2：递归求解"></a>解法2：递归求解</h1>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;基础知识回顾&quot;&gt;&lt;a href=&quot;#基础知识回顾&quot; class=&quot;headerlink&quot; title=&quot;基础知识回顾&quot;&gt;&lt;/a&gt;基础知识回顾&lt;/h1&gt;&lt;p&gt;要了解上面的算法概念，首先要回顾一下这两个基本的数学概念&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;多项式函数&lt;/p&gt;
+        &lt;h1 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;一本书的页码从自然数1开始顺序编码直到自然数n。书的页码按照通常的习惯编排，每个页
       
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://drunkShrimper.github.io/blog/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="递归" scheme="http://drunkShrimper.github.io/blog/tags/%E9%80%92%E5%BD%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法理论之p问题、NP问题、NP完全问题与NP难问题</title>
+    <link href="http://drunkShrimper.github.io/blog/2019/09/17/%E7%AE%97%E6%B3%95%E7%90%86%E8%AE%BA%E4%B9%8Bp%E9%97%AE%E9%A2%98%E3%80%81NP%E9%97%AE%E9%A2%98%E3%80%81NP%E5%AE%8C%E5%85%A8%E9%97%AE%E9%A2%98%E4%B8%8ENP%E9%9A%BE%E9%97%AE%E9%A2%98/"/>
+    <id>http://drunkShrimper.github.io/blog/2019/09/17/算法理论之p问题、NP问题、NP完全问题与NP难问题/</id>
+    <published>2019-09-17T12:20:44.000Z</published>
+    <updated>2019-09-21T00:42:18.397Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="基础知识回顾"><a href="#基础知识回顾" class="headerlink" title="基础知识回顾"></a>基础知识回顾</h1><p>要了解上面的算法概念，首先要回顾一下<a id="more"></a>这两个基本的数学概念</p><ol><li><p>多项式函数</p><p>形如：形如 Pn(x)=a(n)x^n+a(n-1)x^(n-1)+…+a(1)x+a(0)的函数，叫做多项式函数</p><p>例如：y=kx+b 就是一个次数是1的多项式函数，y=ax^2+bx+c就是一个次数为2的多项式函数</p></li><li><p>时间复杂度</p><p>这个东西用大白话来讲就是衡量一个算法优劣的最重要指标，例如冒泡算法的时间复杂度是o(<em>n^2</em>)，其中n是指数据的规模。这里面的<em>n^2</em>就是一个多项式。  </p></li></ol><h1 id="那么什么是p类问题"><a href="#那么什么是p类问题" class="headerlink" title="那么什么是p类问题"></a>那么什么是p类问题</h1><p>例如冒泡算法的时间复杂度是o(<em>n^2</em>)，它是一个多项式时间的算法问题，所以我们将之称为P类问题(P：polynominal，多项式)。</p><h1 id="NP问题的定义"><a href="#NP问题的定义" class="headerlink" title="NP问题的定义"></a>NP问题的定义</h1><p>NP类问题：能在多项式时间内验证得出一个正确解的问题。(NP:Nondeterministic polynominal，非确定性多项式)</p><p><strong>P类问题是NP问题的子集，因为存在多项式时间解法的问题，总能在多项式时间内验证他。</strong></p><p>如何理解NP问题呢？</p><p>我们可以这样想：有一个问题，你不知道是否存在一个多项式算法来解决它，但是你可以通过一次次的猜测（或者说尝试）从而有机会在一个多项式的时间呢找出他的解。这种不确定性就可以称之为N。这样的问题就是NP问题啦。</p><h1 id="NPC问题"><a href="#NPC问题" class="headerlink" title="NPC问题"></a>NPC问题</h1><p>NPC问题:如果所有np问题都能在多项式时间内转化为他，则称该np问题为npc问题(NPC:NP complete又叫NP完全问题)</p><p>那么啥叫问题的转化呢？我们用最直白的想法来理解就是：要解决一个问题的前提是要解决另一个（或多个）问题，这样我们就可以将原来的问题转化为其他的问题了。就好比解方程组一样，求解出了其中一个未知数，就能够求解下一条方程。</p><p><strong>NPC问题是NP问题的子集。</strong></p><p>很多时候NPC问题是找不到一个多项式时间算法的，更多时候他是一个指数级的算法。</p><h1 id="感觉写的有点烂，最后转载一个大佬的讲解"><a href="#感觉写的有点烂，最后转载一个大佬的讲解" class="headerlink" title="感觉写的有点烂，最后转载一个大佬的讲解"></a>感觉写的有点烂，最后转载一个<a href="https://blog.csdn.net/qq_29176963/article/details/82776543" target="_blank" rel="noopener">大佬的讲解</a></h1><blockquote><ol><li>P类问题：能在多项式时间内可解的问题。</li><li>NP类问题：在多项式时间内“可验证”的问题。也就是说，不能判定这个问题到底有没有解，而是猜出一个解来在多项式时间内证明这个解是否正确。即该问题的猜测过程是不确定的，而对其某一个解的验证则能够在多项式时间内完成。P类问题属于NP问题，但NP类问题不一定属于P类问题。</li><li>NPC问题：存在这样一个NP问题，所有的NP问题都可以约化成它。换句话说，只要解决了这个问题，那么所有的NP问题都解决了。其定义要满足2个条件：</li></ol><ul><li>它是一个NP问题；</li><li>所有NP问题都能规约到它。</li></ul><ol start="4"><li><p>NP难问题：NP-Hard问题是这样一种问题，它满足NPC问题定义的第二条但不一定要满足第一条（就是说，NP-Hard问题要比 NPC问题的范围广，NP-Hard问题没有限定属于NP），即所有的NP问题都能约化到它，但是他不一定是一个NP问题。NP-Hard问题同样难以找到多项式的算法，但它不列入我们的研究范围，因为它不一定是NP问题。即使NPC问题发现了多项式级的算法，NP-Hard问题有可能仍然无法得到多项式级的算法。事实上，由于NP-Hard放宽了限定条件，它将有可能比所有的NPC问题的时间复杂度更高从而更难以解决。</p><p>以上四个问题之间的关系如下图所示：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/PNPNPCNPhard/1.jpg" alt="Loading..."></p></li></ol></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;基础知识回顾&quot;&gt;&lt;a href=&quot;#基础知识回顾&quot; class=&quot;headerlink&quot; title=&quot;基础知识回顾&quot;&gt;&lt;/a&gt;基础知识回顾&lt;/h1&gt;&lt;p&gt;要了解上面的算法概念，首先要回顾一下
     
     </summary>
     
