@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://drunkShrimper.github.io/blog/"/>
-  <updated>2019-11-05T02:51:30.752Z</updated>
+  <updated>2019-11-30T13:36:15.284Z</updated>
   <id>http://drunkShrimper.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据库基本概念</title>
+    <link href="http://drunkShrimper.github.io/blog/2019/11/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"/>
+    <id>http://drunkShrimper.github.io/blog/2019/11/30/数据库基本概念/</id>
+    <published>2019-11-30T11:15:46.000Z</published>
+    <updated>2019-11-30T13:36:15.284Z</updated>
+    
+    <content type="html"><![CDATA[<p>Redundancy 冗余<br>Inconsistency 不一致<br>Integrity 完整性<br>Schema – the logical structure of the database 数据模式（数据库的总体设计）</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Redundancy 冗余&lt;br&gt;Inconsistency 不一致&lt;br&gt;Integrity 完整性&lt;br&gt;Schema – the logical structure of the database 数据模式（数据库的总体设计）&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://drunkShrimper.github.io/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="数据库" scheme="http://drunkShrimper.github.io/blog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
   
   <entry>
     <title>多个串的公共子序列</title>
@@ -120,17 +147,13 @@
     <link href="http://drunkShrimper.github.io/blog/2019/09/12/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/"/>
     <id>http://drunkShrimper.github.io/blog/2019/09/12/个人简历/</id>
     <published>2019-09-12T08:02:39.000Z</published>
-    <updated>2019-09-12T08:03:39.996Z</updated>
+    <updated>2019-12-02T06:50:35.239Z</updated>
     
     <content type="html"><![CDATA[<p>正在撰写中…….</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;正在撰写中…….&lt;/p&gt;
-
-      
+      用户自定义页面功能演示
     
     </summary>
     
