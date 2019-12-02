@@ -147,9 +147,9 @@
     <link href="http://drunkShrimper.github.io/blog/2019/09/12/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/"/>
     <id>http://drunkShrimper.github.io/blog/2019/09/12/个人简历/</id>
     <published>2019-09-12T08:02:39.000Z</published>
-    <updated>2019-12-02T06:58:56.994Z</updated>
+    <updated>2019-12-02T07:24:58.964Z</updated>
     
-    <content type="html"><![CDATA[<p>正在撰写中…….</p>]]></content>
+    <content type="html"><![CDATA[<p>@card{<br>在<code>page</code>页中，建议把内容都放到<code>card</code>中。<br>}</p><p>@column-2{<br>@card{</p><h1 id="左"><a href="#左" class="headerlink" title="左"></a>左</h1><p>}<br>@card{</p><h1 id="右"><a href="#右" class="headerlink" title="右"></a>右</h1><p>}<br>}</p><p>@column-3{<br>@card{<br>左<br>}<br>@card{<br>中<br>}<br>@card{<br>右<br>}<br>}</p><p>@timeline{</p><h5 id="2016"><a href="#2016" class="headerlink" title="2016"></a>2016</h5><p>@item{</p><h6 id="11月6日"><a href="#11月6日" class="headerlink" title="11月6日"></a>11月6日</h6><p>第一行<br>第二行 /* ok */<br>}<br>@item{</p><h6 id="11月6日-1"><a href="#11月6日-1" class="headerlink" title="11月6日"></a>11月6日</h6><p>第一行<br>第二行 /* error */<br>}<br>}</p>]]></content>
     
     <summary type="html">
     
