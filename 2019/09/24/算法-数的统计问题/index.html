@@ -20,19 +20,19 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="递归">
-    <meta name="description" content="问题描述 一本书的页码从自然数1开始顺序编码直到自然数n。书的页码按照通常的习惯编排">
-<meta name="keywords" content="递归">
+    <meta name="keywords" content="算法">
+    <meta name="description" content="问题描述 一本书的页码从自然数1开始顺序编码直到自然数n。书的页码按照通常的习惯编排，每个页码都不含多余的前导数字0。例如第6页用6表示而不是06或006。数字统计问题要求对给定书的总页码，计算出书的全部页码中分别用到多少次数字0,1,2,3,…..9。  解法1：暴力求解这个没什么好说的，有编程基础的都会 12345678910111213141516171819202122#include&amp;l">
+<meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法:数的统计问题">
 <meta property="og:url" content="http://drunkShrimper.github.io/blog/2019/09/24/算法-数的统计问题/index.html">
 <meta property="og:site_name" content="今天你进步了吗?">
-<meta property="og:description" content="问题描述 一本书的页码从自然数1开始顺序编码直到自然数n。书的页码按照通常的习惯编排">
+<meta property="og:description" content="问题描述 一本书的页码从自然数1开始顺序编码直到自然数n。书的页码按照通常的习惯编排，每个页码都不含多余的前导数字0。例如第6页用6表示而不是06或006。数字统计问题要求对给定书的总页码，计算出书的全部页码中分别用到多少次数字0,1,2,3,…..9。  解法1：暴力求解这个没什么好说的，有编程基础的都会 12345678910111213141516171819202122#include&amp;l">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-24T10:09:00.047Z">
+<meta property="og:updated_time" content="2020-01-17T16:04:18.311Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法:数的统计问题">
-<meta name="twitter:description" content="问题描述 一本书的页码从自然数1开始顺序编码直到自然数n。书的页码按照通常的习惯编排">
+<meta name="twitter:description" content="问题描述 一本书的页码从自然数1开始顺序编码直到自然数n。书的页码按照通常的习惯编排，每个页码都不含多余的前导数字0。例如第6页用6表示而不是06或006。数字统计问题要求对给定书的总页码，计算出书的全部页码中分别用到多少次数字0,1,2,3,…..9。  解法1：暴力求解这个没什么好说的，有编程基础的都会 12345678910111213141516171819202122#include&amp;l">
     
         <link rel="alternate" type="application/atom+xml" title="今天你进步了吗?" href="/blog/atom.xml">
     
@@ -71,13 +71,6 @@
               <a href="/blog/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/blog/categories"  >
-                <i class="icon icon-lg icon-book"></i>
-                分类
               </a>
             </li>
         
@@ -150,8 +143,6 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/算法/">算法</a></li></ul>
-
             
         </h5>
     </div>
@@ -164,13 +155,6 @@
 
 <div class="container body-wrap">
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#问题描述"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题描述</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解法1：暴力求解"><span class="post-toc-number">2.</span> <span class="post-toc-text">解法1：暴力求解</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解法2：递归求解"><span class="post-toc-number">3.</span> <span class="post-toc-text">解法2：递归求解</span></a></li></ol>
-        </nav>
-    </aside>
-
 
 <article id="post-算法-数的统计问题"
   class="post-article article-type-post fade" itemprop="blogPost">
@@ -181,8 +165,6 @@
             <time class="post-time" title="2019-09-24 18:03:52" datetime="2019-09-24T10:03:52.000Z"  itemprop="datePublished">2019-09-24</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/算法/">算法</a></li></ul>
-
 
 
             
@@ -190,7 +172,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><blockquote>
-<p><strong>一本书的页码从自然数1开始顺序编码直到自然数n。书的页码按照通常的习惯编排 <a id="more"></a>，每个页码都不含多余的前导数字0。例如第6页用6表示而不是06或006。数字统计问题要求对给定书的总页码，计算出书的全部页码中分别用到多少次数字0,1,2,3,…..9。</strong></p>
+<p><strong>一本书的页码从自然数1开始顺序编码直到自然数n。书的页码按照通常的习惯编排，每个页码都不含多余的前导数字0。例如第6页用6表示而不是06或006。数字统计问题要求对给定书的总页码，计算出书的全部页码中分别用到多少次数字0,1,2,3,…..9。</strong></p>
 </blockquote>
 <h1 id="解法1：暴力求解"><a href="#解法1：暴力求解" class="headerlink" title="解法1：暴力求解"></a>解法1：暴力求解</h1><p>这个没什么好说的，有编程基础的都会</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">long</span> totalNum[<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> tmp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        tmp = i;</span><br><span class="line">        <span class="keyword">while</span>(tmp)&#123;</span><br><span class="line">            totalNum[tmp%<span class="number">10</span>]+=<span class="number">1</span>;</span><br><span class="line">            tmp/=<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%ld"</span>,totalNum[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -203,7 +185,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-09-24T10:09:00.047Z" itemprop="dateUpdated">2019-09-24 18:09:00</time>
+    最后更新时间：<time datetime="2020-01-17T16:04:18.311Z" itemprop="dateUpdated">2020-01-18 00:04:18</time>
 </span><br>
 
 
@@ -227,7 +209,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/递归/">递归</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/算法/">算法</a></li></ul>
 
 
             
@@ -247,8 +229,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://drunkShrimper.github.io/blog/2019/09/24/算法-数的统计问题/&title=《算法:数的统计问题》 — 今天你进步了吗?&source=问题描述
-一本书的页码从自然数1开始顺序编码直到自然数n。书的页码按照通常的习惯编排" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://drunkShrimper.github.io/blog/2019/09/24/算法-数的统计问题/&title=《算法:数的统计问题》 — 今天你进步了吗?&source=java spring 算法 springboot web" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -383,18 +364,8 @@
 </div>
 
         <footer class="footer">
-    <div class="top">
-        
-
-        <p>
-            
-                <span><a href="/blog/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
-        </p>
-    </div>
     <div class="bottom">
-        <p><span>lipan &copy; 2015 - 2020</span>
+        <p><span>lipan &copy; 2019 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -422,8 +393,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://drunkShrimper.github.io/blog/2019/09/24/算法-数的统计问题/&title=《算法:数的统计问题》 — 今天你进步了吗?&source=问题描述
-一本书的页码从自然数1开始顺序编码直到自然数n。书的页码按照通常的习惯编排" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://drunkShrimper.github.io/blog/2019/09/24/算法-数的统计问题/&title=《算法:数的统计问题》 — 今天你进步了吗?&source=java spring 算法 springboot web" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
