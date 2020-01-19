@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://drunkShrimper.github.io/blog/"/>
-  <updated>2020-01-17T16:10:46.342Z</updated>
+  <updated>2020-01-17T16:03:51.953Z</updated>
   <id>http://drunkShrimper.github.io/blog/</id>
   
   <author>
@@ -15,47 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>数据库基本概念</title>
-    <link href="http://drunkShrimper.github.io/blog/2019/11/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"/>
-    <id>http://drunkShrimper.github.io/blog/2019/11/30/数据库基本概念/</id>
-    <published>2019-11-30T11:15:46.000Z</published>
-    <updated>2020-01-17T16:10:46.342Z</updated>
-    
-    <content type="html"><![CDATA[<p>Redundancy 冗余<br>Inconsistency 不一致<br>Integrity 完整性<br>Schema – the logical structure of the database 数据模式（数据库的总体设计）</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Redundancy 冗余&lt;br&gt;Inconsistency 不一致&lt;br&gt;Integrity 完整性&lt;br&gt;Schema – the logical structure of the database 数据模式（数据库的总体设计）&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-    
-      <category term="数据库" scheme="http://drunkShrimper.github.io/blog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="多福多寿" scheme="http://drunkShrimper.github.io/blog/tags/%E5%A4%9A%E7%A6%8F%E5%A4%9A%E5%AF%BF/"/>
-    
-      <category term="东方闪电" scheme="http://drunkShrimper.github.io/blog/tags/%E4%B8%9C%E6%96%B9%E9%97%AA%E7%94%B5/"/>
-    
-      <category term="佛挡杀佛" scheme="http://drunkShrimper.github.io/blog/tags/%E4%BD%9B%E6%8C%A1%E6%9D%80%E4%BD%9B/"/>
-    
-      <category term="方法" scheme="http://drunkShrimper.github.io/blog/tags/%E6%96%B9%E6%B3%95/"/>
-    
-      <category term="发顺丰" scheme="http://drunkShrimper.github.io/blog/tags/%E5%8F%91%E9%A1%BA%E4%B8%B0/"/>
-    
-      <category term="dfd" scheme="http://drunkShrimper.github.io/blog/tags/dfd/"/>
-    
-      <category term="lkjk" scheme="http://drunkShrimper.github.io/blog/tags/lkjk/"/>
-    
-      <category term="df" scheme="http://drunkShrimper.github.io/blog/tags/df/"/>
-    
-  </entry>
   
   <entry>
     <title>多个串的公共子序列</title>
@@ -106,34 +65,9 @@
   </entry>
   
   <entry>
-    <title>算法:数的统计问题</title>
-    <link href="http://drunkShrimper.github.io/blog/2019/09/24/%E7%AE%97%E6%B3%95-%E6%95%B0%E7%9A%84%E7%BB%9F%E8%AE%A1%E9%97%AE%E9%A2%98/"/>
-    <id>http://drunkShrimper.github.io/blog/2019/09/24/算法-数的统计问题/</id>
-    <published>2019-09-24T10:03:52.000Z</published>
-    <updated>2020-01-17T16:04:18.311Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><blockquote><p><strong>一本书的页码从自然数1开始顺序编码直到自然数n。书的页码按照通常的习惯编排，每个页码都不含多余的前导数字0。例如第6页用6表示而不是06或006。数字统计问题要求对给定书的总页码，计算出书的全部页码中分别用到多少次数字0,1,2,3,…..9。</strong></p></blockquote><h1 id="解法1：暴力求解"><a href="#解法1：暴力求解" class="headerlink" title="解法1：暴力求解"></a>解法1：暴力求解</h1><p>这个没什么好说的，有编程基础的都会</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">long</span> totalNum[<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> tmp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        tmp = i;</span><br><span class="line">        <span class="keyword">while</span>(tmp)&#123;</span><br><span class="line">            totalNum[tmp%<span class="number">10</span>]+=<span class="number">1</span>;</span><br><span class="line">            tmp/=<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%ld"</span>,totalNum[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="解法2：递归求解"><a href="#解法2：递归求解" class="headerlink" title="解法2：递归求解"></a>解法2：递归求解</h1>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;一本书的页码从自然数1开始顺序编码直到自然数n。书的页码按照通常的习惯编排，每个页
-      
-    
-    </summary>
-    
-    
-    
-      <category term="算法" scheme="http://drunkShrimper.github.io/blog/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
     <title>算法理论之p问题、NP问题、NP完全问题与NP难问题</title>
-    <link href="http://drunkShrimper.github.io/blog/2019/09/17/%E7%AE%97%E6%B3%95%E7%90%86%E8%AE%BA%E4%B9%8Bp%E9%97%AE%E9%A2%98%E3%80%81NP%E9%97%AE%E9%A2%98%E3%80%81NP%E5%AE%8C%E5%85%A8%E9%97%AE%E9%A2%98%E4%B8%8ENP%E9%9A%BE%E9%97%AE%E9%A2%98/"/>
-    <id>http://drunkShrimper.github.io/blog/2019/09/17/算法理论之p问题、NP问题、NP完全问题与NP难问题/</id>
+    <link href="http://drunkShrimper.github.io/blog/2019/09/17/%E7%AE%97%E6%B3%95%E7%90%86%E8%AE%BA%E4%B9%8BNP%E9%97%AE%E9%A2%98/"/>
+    <id>http://drunkShrimper.github.io/blog/2019/09/17/算法理论之NP问题/</id>
     <published>2019-09-17T12:20:44.000Z</published>
     <updated>2020-01-17T16:04:10.232Z</updated>
     
