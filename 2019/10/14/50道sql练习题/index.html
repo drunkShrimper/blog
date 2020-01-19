@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="今天你进步了吗?">
 <meta property="og:description" content="在网上找的50道SQL练习（使用Oracle）数据表创建 学生表 Student  12345678910111213create table Student(SId varchar(10),Sname varchar(10),Sage date,Ssex varchar(10));insert into Student values(&apos;01&apos; , &apos;赵雷&apos; , to_date(&apos;1990-01-">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-12T15:45:25.441Z">
+<meta property="og:updated_time" content="2019-12-25T08:50:30.825Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="50道sql练习题">
 <meta name="twitter:description" content="在网上找的50道SQL练习（使用Oracle）数据表创建 学生表 Student  12345678910111213create table Student(SId varchar(10),Sname varchar(10),Sage date,Ssex varchar(10));insert into Student values(&apos;01&apos; , &apos;赵雷&apos; , to_date(&apos;1990-01-">
@@ -294,17 +294,19 @@
 <h3 id="题型9"><a href="#题型9" class="headerlink" title="题型9"></a>题型9</h3><ol>
 <li>查询和” 01 “号的同学学习的课程完全相同的其他同学的信息</li>
 </ol>
-<p>这题本来不用写这么长但是由于这个操作：<strong>”取一个中间表的某字段最大的记录</strong>“是的这个查询变得很长，实际上没有这么长</p>
+<p>这题本来不用写这么长但是由于这个操作：<strong>”取一个中间表的某字段最大的记录（即：top N问题）“</strong>使得这个查询变得很长，实际上没有这么长</p>
 <p>分析：</p>
 <p>首先取出sid为“01”的学生学习的所有课程的cid，这个应该不难</p>
 <p>然后根据SC表中每个学生的每门成绩有且仅有一条记录这个原则：</p>
 <ul>
 <li>查询出SC中所有学生中有学习“01”学生学习的课程的记录</li>
 <li>对上一条操作得到的中间表进行分组（根据sid），并计算count(cid)</li>
-<li>如果某学生的count(cid)和”01“学生的count(cid)相同，则说明他们所学习的课程完全一样。同样的，如果某学生的count(cid)小于”01“学生的count(cid)，说明他学的课有和”01“学生相同的，但不完全相同。如果某学生并不在这个查询结果内，说明他学的课和”01“学生的课完全不同</li>
+<li>如果某学生的count(cid)和”01“学生的count(cid)相同，则说明他们所学习的课程完全一样。同样的，如果某学生的count(cid)小于”01“学生的count(cid)，说明他学的课有和”01“学生相同的，但没有学完”01“学生学的所有课。如果某学生并不在这个查询结果内，说明他学的课没有一门是”01“学生学的课。</li>
 <li>最后根据题目要求还要排除“01”学生这条记录</li>
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> s.* <span class="keyword">from</span> </span><br><span class="line">student s,</span><br><span class="line">(<span class="keyword">select</span> * <span class="keyword">from</span> </span><br><span class="line">    (<span class="keyword">select</span> <span class="keyword">sid</span>,<span class="keyword">count</span>(cid) same_num <span class="keyword">from</span> SC </span><br><span class="line">        <span class="keyword">where</span> cid <span class="keyword">in</span> (<span class="keyword">select</span> cid <span class="keyword">from</span> SC <span class="keyword">where</span> <span class="keyword">sid</span> = <span class="string">'01'</span>) <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">sid</span>)</span><br><span class="line"><span class="keyword">where</span> same_num = (<span class="keyword">select</span> <span class="keyword">count</span>(cid) <span class="keyword">from</span> SC <span class="keyword">where</span> <span class="keyword">sid</span> =<span class="string">'01'</span>)) t</span><br><span class="line"><span class="keyword">where</span> s.sid =t.sid <span class="keyword">and</span> s.sid &lt;&gt; <span class="string">'01'</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> s.* <span class="keyword">from</span> </span><br><span class="line">student s,</span><br><span class="line">(<span class="keyword">select</span> <span class="keyword">sid</span> <span class="keyword">from</span> SC </span><br><span class="line">        <span class="keyword">where</span> cid <span class="keyword">in</span> (<span class="keyword">select</span> cid <span class="keyword">from</span> SC <span class="keyword">where</span> <span class="keyword">sid</span> = <span class="string">'01'</span>) <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">sid</span> <span class="keyword">having</span></span><br><span class="line"><span class="keyword">count</span>(cid) = (<span class="keyword">select</span> <span class="keyword">count</span>(cid) <span class="keyword">from</span> SC <span class="keyword">where</span> <span class="keyword">sid</span> =<span class="string">'01'</span>)) t</span><br><span class="line"><span class="keyword">where</span> s.sid =t.sid <span class="keyword">and</span> s.sid &lt;&gt; <span class="string">'01'</span>;</span><br></pre></td></tr></table></figure>
 
 <h3 id="题型10"><a href="#题型10" class="headerlink" title="题型10"></a>题型10</h3><ol>
 <li>查询没学过”张三”老师讲授的任一门课程的学生姓名</li>
@@ -439,7 +441,7 @@
 <h2 id="题组4"><a href="#题组4" class="headerlink" title="题组4"></a>题组4</h2><h3 id="题目1-1"><a href="#题目1-1" class="headerlink" title="题目1"></a>题目1</h3><ol>
 <li>查询任何一门课程成绩在 70 分以上的姓名、课程名称和分数</li>
 </ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> sname,cname,score <span class="keyword">from</span> </span><br><span class="line">student <span class="keyword">natural</span> <span class="keyword">join</span> (<span class="keyword">select</span> * <span class="keyword">from</span> sc <span class="keyword">natural</span> <span class="keyword">join</span> course) </span><br><span class="line"><span class="keyword">where</span> score&gt;<span class="number">70</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> sname,cname,score <span class="keyword">from</span> </span><br><span class="line">student <span class="keyword">natural</span> <span class="keyword">join</span>  sc <span class="keyword">natural</span> <span class="keyword">join</span> course</span><br><span class="line"><span class="keyword">where</span> score&gt;<span class="number">70</span>;</span><br></pre></td></tr></table></figure>
 
 <p>解法2：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> student.sname, course.cname,sc.score <span class="keyword">from</span> student,course,sc</span><br><span class="line"><span class="keyword">where</span> sc.score&gt;<span class="number">70</span></span><br><span class="line"><span class="keyword">and</span> student.sid = sc.sid</span><br><span class="line"><span class="keyword">and</span> sc.cid = course.cid;</span><br></pre></td></tr></table></figure>
@@ -527,7 +529,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-11-12T15:45:25.441Z" itemprop="dateUpdated">2019-11-12 23:45:25</time>
+    最后更新时间：<time datetime="2019-12-25T08:50:30.825Z" itemprop="dateUpdated">2019-12-25 16:50:30</time>
 </span><br>
 
 
@@ -717,7 +719,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>lipan &copy; 2015 - 2019</span>
+        <p><span>lipan &copy; 2015 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
