@@ -401,34 +401,39 @@ public void setBonus(Double bonus){
 
 
 
-<section class="comments" id="comments">
-    <div id="gitment_thread"></div>
-    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
-    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="comments" id="comments">
+    <div id="giteement-ctn"></div>
+    
+        <link rel="stylesheet" href="https://giteement.oss-cn-beijing.aliyuncs.com/default.css">
+        <script src="https://giteement.oss-cn-beijing.aliyuncs.com/giteement.browser.js"></script>
+    
+    
     <script>
-        var gitment = new Gitment({
-            owner: 'drunkShrimper',
-            repo: 'Gitalk-blog',
-            oauth: {
-                client_id: 'ed5097df40d768d1e415',
-                client_secret: 'a88d286a9a9ab2d9ed87c6dc0957c2f1f760345e',
-            },
-        })
-        gitment.render('comments')
+    var giteement = new Giteement({
+        owner: 'drunkShrimper',
+        repo: 'blog-comment',
+        backcall_uri: 'https://lipan.fun/',
+        oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
+        oauth: {
+        client_id: '50cc1ebe038c970cd39a42973eb8fbbba8d36dae7825175e8b483e5cb42b1ff8',
+        client_secret: '94d17fef3422b646b2635d4c65289345e66cbae0ccf05c6c79c960a4c679e72f'
+    },
+    })
+    giteement.render('giteement-ctn')
     </script>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
+    </section>
 
 
 
@@ -549,7 +554,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = '快去学习吧';
+            document.title = '今天你进步了吗';
             clearTimeout(titleTime);
         } else {
             document.title = '今天你进步了吗';

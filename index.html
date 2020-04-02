@@ -113,9 +113,14 @@
 </aside>
 
     <main id="main">
-        #SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w .service-wrap-w a {
-display: none!important;
-}
+        
+    
+        <script src="https://giteement.oss-cn-beijing.aliyuncs.com/oauthcallback.browser.js"></script>
+        
+    <script>
+        Oauthcallback();
+    </script>
+
 <header class="top-header" id="header">
     <div class="flex-row">
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
@@ -457,7 +462,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = '快去学习吧';
+            document.title = '今天你进步了吗';
             clearTimeout(titleTime);
         } else {
             document.title = '今天你进步了吗';
