@@ -20,9 +20,9 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="算法">
+    <meta name="keywords" content="算法理论">
     <meta name="description" content="基础知识回顾要了解上面的算法概念，首先要回顾一下这两个基本的数学概念  多项式函数 形如：形如 Pn(x)=a(n)x^n+a(n-1)x^(n-1)+…+a(1)x+a(0)的函数，叫做多项式函数 例如：y=kx+b 就是一个次数是1的多项式函数，y=ax^2+bx+c就是一个次数为2的多项式函数  时间复杂度 这个东西用大白话来讲就是衡量一个算法优劣的最重要指标，例如冒泡算法的时间复杂度是o(">
-<meta name="keywords" content="算法">
+<meta name="keywords" content="算法理论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法理论之NP问题">
 <meta property="og:url" content="http://lipan.fun/2019/09/17/算法理论之NP问题/index.html">
@@ -30,7 +30,7 @@
 <meta property="og:description" content="基础知识回顾要了解上面的算法概念，首先要回顾一下这两个基本的数学概念  多项式函数 形如：形如 Pn(x)=a(n)x^n+a(n-1)x^(n-1)+…+a(1)x+a(0)的函数，叫做多项式函数 例如：y=kx+b 就是一个次数是1的多项式函数，y=ax^2+bx+c就是一个次数为2的多项式函数  时间复杂度 这个东西用大白话来讲就是衡量一个算法优劣的最重要指标，例如冒泡算法的时间复杂度是o(">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/PNPNPCNPhard/1.jpg">
-<meta property="og:updated_time" content="2020-01-19T07:57:27.485Z">
+<meta property="og:updated_time" content="2020-04-02T05:30:00.654Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法理论之NP问题">
 <meta name="twitter:description" content="基础知识回顾要了解上面的算法概念，首先要回顾一下这两个基本的数学概念  多项式函数 形如：形如 Pn(x)=a(n)x^n+a(n-1)x^(n-1)+…+a(1)x+a(0)的函数，叫做多项式函数 例如：y=kx+b 就是一个次数是1的多项式函数，y=ax^2+bx+c就是一个次数为2的多项式函数  时间复杂度 这个东西用大白话来讲就是衡量一个算法优劣的最重要指标，例如冒泡算法的时间复杂度是o(">
@@ -73,6 +73,13 @@
               <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-book"></i>
+                分类
               </a>
             </li>
         
@@ -145,6 +152,8 @@
 </time>
 
 
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
             
         </h5>
     </div>
@@ -167,6 +176,8 @@
             <time class="post-time" title="2019-09-17 20:20:44" datetime="2019-09-17T12:20:44.000Z"  itemprop="datePublished">2019-09-17</time>
 
             
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
 
 
             
@@ -192,7 +203,7 @@
 <p>那么啥叫问题的转化呢？我们用最直白的想法来理解就是：要解决一个问题的前提是要解决另一个（或多个）问题，这样我们就可以将原来的问题转化为其他的问题了。就好比解方程组一样，求解出了其中一个未知数，就能够求解下一条方程。</p>
 <p><strong>NPC问题是NP问题的子集。</strong></p>
 <p>很多时候NPC问题是找不到一个多项式时间算法的，更多时候他是一个指数级的算法。</p>
-<h1 id="感觉写的有点烂，最后转载一个大佬的讲解"><a href="#感觉写的有点烂，最后转载一个大佬的讲解" class="headerlink" title="感觉写的有点烂，最后转载一个大佬的讲解"></a>感觉写的有点烂，最后转载一个<a href="https://blog.csdn.net/qq_29176963/article/details/82776543" target="_blank" rel="noopener">大佬的讲解</a></h1><blockquote>
+<h1 id="最后转载一个大佬的讲解"><a href="#最后转载一个大佬的讲解" class="headerlink" title="最后转载一个大佬的讲解"></a>最后转载一个<a href="https://blog.csdn.net/qq_29176963/article/details/82776543" target="_blank" rel="noopener">大佬的讲解</a></h1><blockquote>
 <ol>
 <li>P类问题：能在多项式时间内可解的问题。</li>
 <li>NP类问题：在多项式时间内“可验证”的问题。也就是说，不能判定这个问题到底有没有解，而是猜出一个解来在多项式时间内证明这个解是否正确。即该问题的猜测过程是不确定的，而对其某一个解的验证则能够在多项式时间内完成。P类问题属于NP问题，但NP类问题不一定属于P类问题。</li>
@@ -216,7 +227,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-01-19T07:57:27.485Z" itemprop="dateUpdated">2020-01-19 15:57:27</time>
+    最后更新时间：<time datetime="2020-04-02T05:30:00.654Z" itemprop="dateUpdated">2020-04-02 13:30:00</time>
 </span><br>
 
 
@@ -236,7 +247,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法理论/">算法理论</a></li></ul>
 
 
             
@@ -366,12 +377,19 @@
 
         <footer class="footer">
     <div class="bottom">
-        <p><span> 2019 - 2020</span>
+        <p>
+			<span> 2019 - 2020</span>
             <span>
                 
-                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备20019675号-1</a>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank" style="text-decoration:none;">粤ICP备20019675号-1</a>
                 
             </span>
+			<span>
+				<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44178102001155" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+					<img src="/img/gov_beian.png" style="float:left;"/>
+					&nbsp;粤公网安备 44178102001155号
+				</a>
+			</span>
         </p>
     </div>
 </footer>
