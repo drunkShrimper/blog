@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>百问Java | 今天你进步了吗</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Java,面试题">
+    <meta name="description" content="Q1：简述JDK8的新特性答：①接口中可以添加default修饰的非抽象方法，可以有方法体和内容。②可以使用lambda表达式，减少代码冗余。③函数式接口，使用@FunctionalInterface注解标明，该接口有且仅有一个抽象方法。④方法引用，可以直接引用已有Java类或对象的方法或构造器，进一步简化lambda表达式。⑤stream流，用于解决已有集合/数组类库的弊端，简化其操作，有for">
+<meta name="keywords" content="Java,面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="百问Java">
+<meta property="og:url" content="http://lipan.fun/2020/04/02/百问Java/index.html">
+<meta property="og:site_name" content="今天你进步了吗">
+<meta property="og:description" content="Q1：简述JDK8的新特性答：①接口中可以添加default修饰的非抽象方法，可以有方法体和内容。②可以使用lambda表达式，减少代码冗余。③函数式接口，使用@FunctionalInterface注解标明，该接口有且仅有一个抽象方法。④方法引用，可以直接引用已有Java类或对象的方法或构造器，进一步简化lambda表达式。⑤stream流，用于解决已有集合/数组类库的弊端，简化其操作，有for">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-02T16:26:12.822Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="百问Java">
+<meta name="twitter:description" content="Q1：简述JDK8的新特性答：①接口中可以添加default修饰的非抽象方法，可以有方法体和内容。②可以使用lambda表达式，减少代码冗余。③函数式接口，使用@FunctionalInterface注解标明，该接口有且仅有一个抽象方法。④方法引用，可以直接引用已有Java类或对象的方法或构造器，进一步简化lambda表达式。⑤stream流，用于解决已有集合/数组类库的弊端，简化其操作，有for">
+    
+        <link rel="alternate" type="application/atom+xml" title="今天你进步了吗" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/morty.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lipan</h5>
+          <a href="mailto:lipan_private@163.com" title="lipan_private@163.com" class="mail">lipan_private@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-book"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间轴
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/drunkShrimper" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resume"  >
+                <i class="icon icon-lg icon-user"></i>
+                简历
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">百问Java</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">百问Java</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-04-02T15:28:42.000Z" itemprop="datePublished" class="page-time">
+  2020-04-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-百问Java"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">百问Java</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-04-02 23:28:42" datetime="2020-04-02T15:28:42.000Z"  itemprop="datePublished">2020-04-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><strong>Q1：简述JDK8的新特性</strong><br>答：①接口中可以添加<code>default</code>修饰的非抽象方法，可以有方法体和内容。②可以使用lambda表达式，减少代码冗余。③函数式接口，使用<code>@FunctionalInterface</code>注解标明，该接口有且仅有一个抽象方法。④方法引用，可以直接引用已有Java类或对象的方法或构造器，进一步简化lambda表达式。⑤stream流，用于解决已有集合/数组类库的弊端，简化其操作，有<code>foreach</code>遍历、<code>filter</code>过滤、<code>map</code>映射、<code>concat</code>合并等功能。⑥增加日期相关的API。</p>
+<p><strong>Q2：Stream流了解吗？</strong><br>答：①Stream流是JDK1.8的新特性，用于解决已有集合/数组类库的弊端，简化集合/数组的操作。②stream流的获取：集合：直接调用stream()方法获取；数组：使用静态方法<code>Stream.of()</code>/<code>Arrays.stream()</code>获取。③常用方法：<code>forEach()</code> 遍历；<code>count()</code> 统计个数；<code>filter()</code> 按条件过滤；<code>limit()</code> 取前面n个元素；<code>skip()</code> 跳过前面n个元素；<code>map()</code> 映射加工；<code>concat()</code> 合并stream流。④终结方法：foreach/count 调用终结方法后流不能继续使用；非终结方法：每次调用完返回一个新的stream对象，可以继续使用，支持链式编程。⑤收集stream流：把流转为Set集合 <code>collect(Collections.toSet())</code>；把流转为List集合 <code>collect(Collections.toList())</code>；把流转为Collection集合 <code>collect(Collections.toCollection())</code>；把流转为数组 <code>toArray()</code>。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-04-02T16:26:12.822Z" itemprop="dateUpdated">2020-04-03 00:26:12</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://lipan.fun">
+            <img src="/img/morty.jpg" alt="lipan">
+            lipan
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipan.fun/2020/04/02/百问Java/&title=《百问Java》 — 今天你进步了吗&pic=http://lipan.fun/img/morty.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipan.fun/2020/04/02/百问Java/&title=《百问Java》 — 今天你进步了吗&source=java spring 算法 springboot web" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipan.fun/2020/04/02/百问Java/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《百问Java》 — 今天你进步了吗&url=http://lipan.fun/2020/04/02/百问Java/&via=http://lipan.fun" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipan.fun/2020/04/02/百问Java/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/04/02/Java泛型基础/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Java泛型基础</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="comments" id="comments">
+    <div id="giteement-ctn"></div>
+    
+        <link rel="stylesheet" href="/css/gitee.css">
+        <script src="/js/giteement.browser.js"></script>
+    
+    
+    <script>
+    var giteement = new Giteement({
+		id: '20200402232842',
+        owner: 'drunkShrimper',
+        repo: 'blog-comment',
+        backcall_uri: 'https://lipan.fun',
+        oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
+        oauth: {
+        client_id: '50cc1ebe038c970cd39a42973eb8fbbba8d36dae7825175e8b483e5cb42b1ff8',
+        client_secret: '94d17fef3422b646b2635d4c65289345e66cbae0ccf05c6c79c960a4c679e72f'
+    },
+    })
+    giteement.render('giteement-ctn')
+    </script>
+    </section>
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="bottom">
+        <p>
+			<span> 2019 - 2020</span>
+            <span>
+                
+                <a href="http://www.beian.miit.gov.cn/" target="_blank" style="text-decoration:none;">粤ICP备20019675号-1</a>
+                
+            </span>
+			<span>
+				<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44178102001155" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+					<img src="/img/gov.png" style="float:left;"/>
+					&nbsp;粤公网安备 44178102001155号
+				</a>
+			</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipan.fun/2020/04/02/百问Java/&title=《百问Java》 — 今天你进步了吗&pic=http://lipan.fun/img/morty.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipan.fun/2020/04/02/百问Java/&title=《百问Java》 — 今天你进步了吗&source=java spring 算法 springboot web" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipan.fun/2020/04/02/百问Java/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《百问Java》 — 今天你进步了吗&url=http://lipan.fun/2020/04/02/百问Java/&via=http://lipan.fun" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipan.fun/2020/04/02/百问Java/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByElEQVR42u3aQW7DMAwEwPz/0+61BWphSVpKAoxORuDY4wshrvh6xev6tdb33F2vf3l44eLijrnXcuX39D6j/HxcXNyD3Pw1vY+sPv/2d1xc3C/hJiVs/V9cXNxv5+ZFLW9+cHFxP5ObvHISfzzWXOHi4h7h5inlvust+S4uLm6LexXX+gPWhan3xj9PwMXFPcLNC8oanUB7hQwXF/c8Nw8m8sC0euyaHLiWz15wcXEH3GpY2StD1VC1ucXBxcXdwJ0PWFSD1CT3+Od+XFzczdzCxmIQavRKW9T84OLibuP2Ctm8/FWPbXBxcU9yk1anF6ROilc5MMXFxX2IOy9A63Yof325WcLFxT3C7UWlSctUbX6iQoaLi7uZ2ytD8zi1dxyLi4t7npusSVHL45XRHBkuLu5D3LyNmbRG1VGMQsqLi4t7hJsMRuSIyUDnAxRcXNyY2xukyEtYfgwTbbNwcXGPcKsNz6RpyUPYZJOEi4u7mzsZpcrD0DxO3TJ4gYuL2+LmwWiyTSm8Pj6IxcXF/Xxu9SC2tw0qpCa4uLgfwO0VsmqjdXuUgouLe4Q7CUkTdLVs4eLivpebF5d5GJoPZDyQ7+Li4na4Pws+r45wUdoGAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '今天你进步了吗';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '今天你进步了吗';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

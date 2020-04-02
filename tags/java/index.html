@@ -153,19 +153,31 @@
             ">全部</a>
         
 
-            <a href="/tags/Markdown/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">Markdown</a>
+            <a href="/tags/泛型/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">泛型</a>
 
         
 
-            <a href="/tags/动态规划/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">动态规划</a>
+            <a href="/tags/Java/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">Java</a>
 
         
 
-            <a href="/tags/算法/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">算法</a>
+            <a href="/tags/面试题/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">面试题</a>
 
         
 
-            <a href="/tags/算法理论/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">算法理论</a>
+            <a href="/tags/Markdown/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">Markdown</a>
+
+        
+
+            <a href="/tags/动态规划/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">动态规划</a>
+
+        
+
+            <a href="/tags/算法/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">算法</a>
+
+        
+
+            <a href="/tags/算法理论/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">算法理论</a>
 
         
 
@@ -329,6 +341,48 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <template id="search-tpl">
 <li class="item">
     <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '今天你进步了吗';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '今天你进步了吗';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
+  <a href="{path}" class="waves-block waves-effect">
         <div class="title ellipsis" title="{title}">{title}</div>
         <div class="flex-row flex-middle">
             <div class="tags ellipsis">
