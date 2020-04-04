@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>为什么重写equals方法需同时重写hashCode方法 | 今天你进步了吗</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Java">
+    <meta name="description" content="12345678910111213141516171819202122232425262728public class MyTest &amp;#123;    private static class Person&amp;#123;        String name;        public Person(String name) &amp;#123;            this.name = name;">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么重写equals方法需同时重写hashCode方法">
+<meta property="og:url" content="http://lipan.fun/2020/04/04/为什么重写equals方法需同时重写hashCode方法/index.html">
+<meta property="og:site_name" content="今天你进步了吗">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728public class MyTest &amp;#123;    private static class Person&amp;#123;        String name;        public Person(String name) &amp;#123;            this.name = name;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-04T09:34:44.569Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="为什么重写equals方法需同时重写hashCode方法">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728public class MyTest &amp;#123;    private static class Person&amp;#123;        String name;        public Person(String name) &amp;#123;            this.name = name;">
+    
+        <link rel="alternate" type="application/atom+xml" title="今天你进步了吗" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/morty.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lipan</h5>
+          <a href="mailto:lipan_private@163.com" title="lipan_private@163.com" class="mail">lipan_private@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-book"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间轴
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/drunkShrimper" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resume"  >
+                <i class="icon icon-lg icon-user"></i>
+                简历
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">为什么重写equals方法需同时重写hashCode方法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">为什么重写equals方法需同时重写hashCode方法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-04-04T09:24:41.000Z" itemprop="datePublished" class="page-time">
+  2020-04-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-为什么重写equals方法需同时重写hashCode方法"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">为什么重写equals方法需同时重写hashCode方法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-04-04 17:24:41" datetime="2020-04-04T09:24:41.000Z"  itemprop="datePublished">2020-04-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">        String name;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span> == o) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (o == <span class="keyword">null</span> || getClass() != o.getClass())&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            Person person = (Person) o;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.name.equals(o.name);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String []args)</span></span>&#123;</span><br><span class="line">        HashMap&lt;Person,String&gt; map = <span class="keyword">new</span> HashMap&lt;Person, String&gt;();</span><br><span class="line">        Person person = <span class="keyword">new</span> Person(<span class="string">"张三"</span>);</span><br><span class="line">        map.put(person,<span class="string">"张三"</span>);</span><br><span class="line">        <span class="comment">//从逻辑上讲应该能输出“张三”</span></span><br><span class="line">        System.out.println(<span class="string">"结果:"</span>+map.get(<span class="keyword">new</span> Person(<span class="string">"张三"</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述程序的输出结果为<code>null</code></p>
+<p>这是因为在put操作的时候，使用的key从逻辑上讲是等值的（通过equals比较是相等的），但由于没有重写hashCode方法，所以put操作时，变量person最终索引位置是由其hashcode的值来决定的 ，而当我们想通过<code>new Person(&quot;张三&quot;)</code>取出value的时候这个匿名变量的hashcode与变量person的hashcode并不相等，导致计算出的数组下标不同，因此HashMap找不到该key对应的值，返回<code>null</code>。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-04-04T09:34:44.569Z" itemprop="dateUpdated">2020-04-04 17:34:44</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://lipan.fun">
+            <img src="/img/morty.jpg" alt="lipan">
+            lipan
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipan.fun/2020/04/04/为什么重写equals方法需同时重写hashCode方法/&title=《为什么重写equals方法需同时重写hashCode方法》 — 今天你进步了吗&pic=http://lipan.fun/img/morty.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipan.fun/2020/04/04/为什么重写equals方法需同时重写hashCode方法/&title=《为什么重写equals方法需同时重写hashCode方法》 — 今天你进步了吗&source=java spring 算法 springboot web" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipan.fun/2020/04/04/为什么重写equals方法需同时重写hashCode方法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《为什么重写equals方法需同时重写hashCode方法》 — 今天你进步了吗&url=http://lipan.fun/2020/04/04/为什么重写equals方法需同时重写hashCode方法/&via=http://lipan.fun" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipan.fun/2020/04/04/为什么重写equals方法需同时重写hashCode方法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/04/03/HashMap精解/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">HashMap精解</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="comments" id="comments">
+    <div id="giteement-ctn"></div>
+    
+        <link rel="stylesheet" href="/css/gitee.css">
+        <script src="/js/giteement.browser.js"></script>
+    
+    
+    <script>
+    var giteement = new Giteement({
+		id: '20200404172441',
+        owner: 'drunkShrimper',
+        repo: 'blog-comment',
+        backcall_uri: 'https://lipan.fun',
+        oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
+        oauth: {
+        client_id: '50cc1ebe038c970cd39a42973eb8fbbba8d36dae7825175e8b483e5cb42b1ff8',
+        client_secret: '94d17fef3422b646b2635d4c65289345e66cbae0ccf05c6c79c960a4c679e72f'
+    },
+    })
+    giteement.render('giteement-ctn')
+    </script>
+    </section>
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="bottom">
+        <p>
+			<span> 2019 - 2020</span>
+            <span>
+                
+                <a href="http://www.beian.miit.gov.cn/" target="_blank" style="text-decoration:none;">粤ICP备20019675号-1</a>
+                
+            </span>
+			<span>
+				<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44178102001155" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+					<img src="/img/gov.png" style="float:left;"/>
+					&nbsp;粤公网安备 44178102001155号
+				</a>
+			</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipan.fun/2020/04/04/为什么重写equals方法需同时重写hashCode方法/&title=《为什么重写equals方法需同时重写hashCode方法》 — 今天你进步了吗&pic=http://lipan.fun/img/morty.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipan.fun/2020/04/04/为什么重写equals方法需同时重写hashCode方法/&title=《为什么重写equals方法需同时重写hashCode方法》 — 今天你进步了吗&source=java spring 算法 springboot web" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipan.fun/2020/04/04/为什么重写equals方法需同时重写hashCode方法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《为什么重写equals方法需同时重写hashCode方法》 — 今天你进步了吗&url=http://lipan.fun/2020/04/04/为什么重写equals方法需同时重写hashCode方法/&via=http://lipan.fun" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipan.fun/2020/04/04/为什么重写equals方法需同时重写hashCode方法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADLUlEQVR42u3awY7iMBAEUP7/p9nrSruEqnaQsHk5jVBI/Myhprv9eMTX8/J6deejvP7+1r/Pyddw24WNjY29CTt53GwR1/dff/7qCddbXGwNNjY29nHsJE6SiEoWev2tHJm88eXn2NjY2D/Mjh56GZBJfCaxh42NjY29zm4bTEn4tcUJNjY2NvZd7aG2kbRNLw0bGxv769mzEex3/v2R+TY2Njb2F7Of5dWGR9tySsYAbWj951vY2NjYB7HzAGjb9Mknd21uu35sbGzsk9j52HX2+qRVdNehn+S90WkgbGxs7K3Y+U15OK2MhFfGAO3gARsbG/sMdntYJ1/6UrSUm5tv2ctSBBsbG3tzdtLKXx8etIPbZG1FSuc7h42Njb0hu42QWbDNxrT5z1MUM9jY2NgHsWfHaO5qJ31ueJCXOtjY2Ni/wG6DpH3mLCzbplW0TmxsbOwj2LNlzSIwCbz1yWy0fmxsbOxt2Xe9PqGuFDztGt78VNjY2NhHs2dR8Ym/81FxfawTGxsb+zh2Ds5b8HlhMIurpVVhY2NjH8RuwyNZykpPKz/Wk+DfrAQbGxv7CHZ78DG5sx3QtlHXjoHfNJWwsbGxN2fn/8SvjA3ysGnLkln7CRsbG/s8dk7KS4v8yOaMPRsMYGNjY5/KvmtA2x6pSZa+MgZ+U3dgY2NjH8TOS452C9oGU7sdeQTmhRY2Njb2XuykrdMOemft+yTAZuE6nIpgY2Njb8KehUc7DJ6NEOq8HYUlNjY29u7stiW0HidJkbNyMCiJSWxsbOyT2HmM5fe0Tag86pLh8VIvDRsbG3tb9iwk2hKixSe8paYSNjY29g+w20iYpWUOzuOzLjywsbGxj2Cvx087YEjWcMPJo+uDO9jY2Nibs5/ldVcWtLPopPzISxRsbGzsk9gruZeHXDvczYMzf+8Qj42Njb0Je3ZQZjb0nR27yYuTYsiBjY2NfRw7LxJWFrQOnlUT2NjY2NgJph3W3vvGeoXY2NjYP8zOj/usH7LJB8xL821sbGzsI9jtQZmVoWy7cW1k3txLw8bGxv56dlskrDeAkjvXf4Ab2lLY2NjY387+AxqkDDdOGkTxAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '今天你进步了吗';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '今天你进步了吗';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
