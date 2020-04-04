@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>KMP算法 | 今天你进步了吗</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="KMP,算法">
+    <meta name="description" content="输入样例1234567894oadhifgoarhglkdsaoarabcdefgdecalgeojflasojfjfaweiofof  输出样例12348057  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263">
+<meta name="keywords" content="KMP,算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KMP算法">
+<meta property="og:url" content="http://lipan.fun/2020/04/04/KMP算法/index.html">
+<meta property="og:site_name" content="今天你进步了吗">
+<meta property="og:description" content="输入样例1234567894oadhifgoarhglkdsaoarabcdefgdecalgeojflasojfjfaweiofof  输出样例12348057  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-04T13:16:58.626Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KMP算法">
+<meta name="twitter:description" content="输入样例1234567894oadhifgoarhglkdsaoarabcdefgdecalgeojflasojfjfaweiofof  输出样例12348057  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263">
+    
+        <link rel="alternate" type="application/atom+xml" title="今天你进步了吗" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/morty.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lipan</h5>
+          <a href="mailto:lipan_private@163.com" title="lipan_private@163.com" class="mail">lipan_private@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-book"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间轴
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/drunkShrimper" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resume"  >
+                <i class="icon icon-lg icon-user"></i>
+                简历
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">KMP算法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">KMP算法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-04-04T12:36:43.000Z" itemprop="datePublished" class="page-time">
+  2020-04-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-KMP算法"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">KMP算法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-04-04 20:36:43" datetime="2020-04-04T12:36:43.000Z"  itemprop="datePublished">2020-04-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">oadhifgoarhglkdsa</span><br><span class="line">oar</span><br><span class="line">abcdefg</span><br><span class="line">dec</span><br><span class="line">algeojflas</span><br><span class="line">ojf</span><br><span class="line">jfaweiof</span><br><span class="line">of</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">8</span><br><span class="line">0</span><br><span class="line">5</span><br><span class="line">7</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">#include "stdio.h"</span><br><span class="line">#include "stdlib.h"</span><br><span class="line">#include "iostream.h"</span><br><span class="line">#define TRUE  1</span><br><span class="line">#define FALSE  0</span><br><span class="line">#define OK  1</span><br><span class="line">#define ERROR  0</span><br><span class="line">#define INFEASLBLE  -1</span><br><span class="line">#define OVERFLOW  -2</span><br><span class="line">#define MAXSTRLEN  255  //用户可在255以内定义最大串长</span><br><span class="line">typedef unsigned <span class="keyword">char</span> SString[MAXSTRLEN + <span class="number">1</span>];   <span class="comment">//0号单元存放串的长度</span></span><br><span class="line"><span class="keyword">int</span> next[<span class="number">10000</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_next</span><span class="params">(SString T, <span class="keyword">int</span> next[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//i&lt;j是恒成立的（在第i个位置匹配失败最好情况是对比第i-1个，j最大值是i-1）</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>;</span><br><span class="line">    next[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; T[<span class="number">0</span>])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (j == <span class="number">0</span> || T[i] == T[j])</span><br><span class="line">        &#123;</span><br><span class="line">            ++i;</span><br><span class="line">            ++j;<span class="comment">//巧妙地得到了下一次要比较的位置 j</span></span><br><span class="line">            next[i] = j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            j = next[j];<span class="comment">//第j个字母失配，接下来从第next[j]个开始对比</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Index_KMP</span><span class="params">(SString S, SString T, <span class="keyword">int</span> pos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = pos, j = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//j一旦超过模式串长度则匹配成功，i超过主串长度且j没有超出长度则匹配失败</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= S[<span class="number">0</span>] &amp;&amp; j &lt;= T[<span class="number">0</span>])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//成功匹配（j肯定不为0）则匹配下一个字符 或 第一个就不匹配（j=0,j++就变为1，刚好重新匹配）</span></span><br><span class="line">        <span class="keyword">if</span> (j == <span class="number">0</span> || S[i] == T[j])</span><br><span class="line">        &#123;</span><br><span class="line">            ++i;</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            j = next[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (j &gt; T[<span class="number">0</span>])<span class="comment">//j一旦超过模式串长度则匹配成功</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> i - T[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    SString T, S;</span><br><span class="line">    <span class="keyword">int</span> i, j, n;</span><br><span class="line">    <span class="keyword">char</span> ch;</span><br><span class="line">    <span class="keyword">int</span> pos;</span><br><span class="line">    scanf(<span class="string">"%d"</span>,&amp;n); <span class="comment">// 指定n对需进行模式匹配的字符串</span></span><br><span class="line">    ch = getchar();</span><br><span class="line">    <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        ch = getchar();</span><br><span class="line">        <span class="keyword">for</span> ( i = <span class="number">1</span>; i &lt;= MAXSTRLEN &amp;&amp; (ch != <span class="string">'\n'</span>); i++) <span class="comment">// 录入主串</span></span><br><span class="line">        &#123;</span><br><span class="line">            S[i] = ch;</span><br><span class="line">            ch = getchar();</span><br><span class="line">        &#125;</span><br><span class="line">        S[<span class="number">0</span>] = i - <span class="number">1</span>; <span class="comment">// S[0]用于存储主串中字符个数</span></span><br><span class="line">        ch = getchar();</span><br><span class="line">        <span class="keyword">for</span> ( i = <span class="number">1</span>; i &lt;= MAXSTRLEN &amp;&amp; (ch != <span class="string">'\n'</span>); i++) <span class="comment">// 录入模式串</span></span><br><span class="line">        &#123;</span><br><span class="line">            T[i] = ch;</span><br><span class="line">            ch = getchar();</span><br><span class="line">        &#125;</span><br><span class="line">        T[<span class="number">0</span>] = i - <span class="number">1</span>; <span class="comment">// T[0]用于存储模式串中字符个数</span></span><br><span class="line">        pos =Index_KMP(S, T,<span class="number">0</span>); </span><br><span class="line">        printf(<span class="string">"%d\n"</span>, pos);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-04-04T13:16:58.626Z" itemprop="dateUpdated">2020-04-04 21:16:58</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://lipan.fun">
+            <img src="/img/morty.jpg" alt="lipan">
+            lipan
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KMP/">KMP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipan.fun/2020/04/04/KMP算法/&title=《KMP算法》 — 今天你进步了吗&pic=http://lipan.fun/img/morty.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipan.fun/2020/04/04/KMP算法/&title=《KMP算法》 — 今天你进步了吗&source=java spring 算法 springboot web" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipan.fun/2020/04/04/KMP算法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《KMP算法》 — 今天你进步了吗&url=http://lipan.fun/2020/04/04/KMP算法/&via=http://lipan.fun" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipan.fun/2020/04/04/KMP算法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/04/04/基础排序算法/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">基础排序算法</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/04/04/为什么重写equals方法需同时重写hashCode方法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">为什么重写equals方法需同时重写hashCode方法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="comments" id="comments">
+    <div id="giteement-ctn"></div>
+    
+        <link rel="stylesheet" href="/css/gitee.css">
+        <script src="/js/giteement.browser.js"></script>
+    
+    
+    <script>
+    var giteement = new Giteement({
+		id: '20200404203643',
+        owner: 'drunkShrimper',
+        repo: 'blog-comment',
+        backcall_uri: 'https://lipan.fun',
+        oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
+        oauth: {
+        client_id: '50cc1ebe038c970cd39a42973eb8fbbba8d36dae7825175e8b483e5cb42b1ff8',
+        client_secret: '94d17fef3422b646b2635d4c65289345e66cbae0ccf05c6c79c960a4c679e72f'
+    },
+    })
+    giteement.render('giteement-ctn')
+    </script>
+    </section>
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="bottom">
+        <p>
+			<span> 2019 - 2020</span>
+            <span>
+                
+                <a href="http://www.beian.miit.gov.cn/" target="_blank" style="text-decoration:none;">粤ICP备20019675号-1</a>
+                
+            </span>
+			<span>
+				<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44178102001155" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+					<img src="/img/gov.png" style="float:left;"/>
+					&nbsp;粤公网安备 44178102001155号
+				</a>
+			</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipan.fun/2020/04/04/KMP算法/&title=《KMP算法》 — 今天你进步了吗&pic=http://lipan.fun/img/morty.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipan.fun/2020/04/04/KMP算法/&title=《KMP算法》 — 今天你进步了吗&source=java spring 算法 springboot web" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipan.fun/2020/04/04/KMP算法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《KMP算法》 — 今天你进步了吗&url=http://lipan.fun/2020/04/04/KMP算法/&via=http://lipan.fun" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipan.fun/2020/04/04/KMP算法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwUlEQVR42u3aQWoDMRAEQP//0w7kFEi87h5ZYgOlkxF4XetDo5nR4xGv5/ea7fxcv/cfOxYuLu4y93m5XlGun5P/Sm7AxcU9z70Or1dfTiIp+QsSAy4u7j25eWC1kYeLi/t/uW2QJQGHi4t7Z25enORtkaRdsrFWw8XFXeC2DdMdnzf2d3FxcUvus1yzY9AsvP74dVxc3CPclcNKO0C93imGN7i4uJu5bfTMCpv2D3oTYbi4uJu5s8FG2xyZXeN4uYOLi3sDbttCzXeGMYqLi3uEuzLybMceLT26uImLi7uZm0fYSvN0RsfFxT3DbeNjpXQZXsPCxcU9zl1pZCQlUx5wxVgFFxf3CHeGzpunyWXQOvhwcXG3cWeB8tnLW0XM4eLiHuG2pU4+Lp1dzYzKM1xc3M3c9kHt4CRpeRRjWlxc3IPchJLHVr6TvyQuLu557izOkvZHTimGKLi4uJu5nzqg1Neq4obsMARxcXGXuW14zS5d5a/6JhZxcXEPcj81AkkOQHlo4uLi3p+bjF7eND1HTxt2XnFxcQ9y26Ko3cHFxb0PNx+vFseRIODq8gkXF/cId6VhmhyGVtoluLi4x7lfOmnIL6A9kacAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '今天你进步了吗';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '今天你进步了吗';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
