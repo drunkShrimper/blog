@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://lipan.fun/2020/04/03/HashMap精解/1585987201(1).png">
 <meta property="og:image" content="http://lipan.fun/2020/04/03/HashMap精解/1585987390(1).png">
 <meta property="og:image" content="http://lipan.fun/2020/04/03/HashMap精解/1585988362(1).png">
-<meta property="og:updated_time" content="2020-04-04T09:45:26.040Z">
+<meta property="og:updated_time" content="2020-04-04T09:50:31.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap精解">
 <meta name="twitter:description" content="1.哈希表哈希表的添加，删除，查找等操作，性能十分之高，在没有发生哈希冲突的情况下，仅需一次定位即可完成，时间复杂度为O(1)。哈希表的本质是一个数组，数组是采用一段连续的存储单元来存储数据的数据结构。当我们知道下标时，在数组中查找元素的时间复杂度为O(1)。哈希表正是利用了这个特性。 当我们要新增或查找某个元素，最关键的是找到存放该元素的数组下标。 如何计算数组下标？我们知道每一个对象都有一个哈">
@@ -193,12 +193,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"aasdfdsf"</span>.hashCode());</span><br><span class="line">        System.out.println(<span class="string">"adfsdf"</span>.hashCode());</span><br><span class="line">        System.out.println(<span class="string">"cdffdf"</span>.hashCode());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出结果：</p>
-<img src="1585964038(1).png" width="50%">
+<img src="1585964038(1).png">
 
 <p>可以发现这些哈希值会很大，有时还有负数，怎么能作为数组下标呢，有一种简单的办法是：<strong>取余</strong></p>
-<img src="1585987201(1).png" width="50%">
+<img src="1585987201(1).png">
 
-<img src="1585987390(1).png" width="50%">
+<img src="1585987390(1).png">
 
 <p><strong>取余</strong>就是一个简单的<strong>哈希函数</strong></p>
 <h4 id="哈希冲突"><a href="#哈希冲突" class="headerlink" title="哈希冲突"></a><strong>哈希冲突</strong></h4><p>可以发现，对于两个元素的哈希值经过哈希函数处理后的结果可能是相同的。<strong>如果两个不同的元素，通过哈希函数得出的实际存储地址相同怎么办</strong>？这种情况就是所谓的<strong>哈希冲突</strong>。</p>
@@ -207,7 +207,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> K key;</span><br><span class="line">    V value;</span><br><span class="line">    Node&lt;K,V&gt; next;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>所以，HashMap的总体结构可以想象成：</p>
-<img src="1585988362(1).png" width="50%">
+<img src="1585988362(1).png">
 
 <p>通常说<strong>HashMap由数组+链表组成的</strong>，这是指<strong>JDK1.7之前</strong>的HashMap</p>
 <p>当然，在HashMap中的哈希函数肯定不是取余这么简单，在JDK1.7中的哈希函数大体可以理解为将哈希值与HashMap的大小-1进行<strong>二进制与操作</strong></p>
@@ -246,7 +246,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-04T09:45:26.040Z" itemprop="dateUpdated">2020-04-04 17:45:26</time>
+    最后更新时间：<time datetime="2020-04-04T09:50:31.436Z" itemprop="dateUpdated">2020-04-04 17:50:31</time>
 </span><br>
 
 
