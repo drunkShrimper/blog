@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://lipan.fun/2020/04/05/TCP三次握手四次挥手/55dc4e84-573d-4c13-a765-52ed1dd251f9.png">
 <meta property="og:image" content="http://lipan.fun/2020/04/05/TCP三次握手四次挥手/e92d0ebc-7d46-413b-aec1-34a39602f787.png">
-<meta property="og:updated_time" content="2020-04-05T03:06:03.943Z">
+<meta property="og:updated_time" content="2020-04-05T03:09:54.647Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP三次握手四次挥手">
 <meta name="twitter:description" content="TCP报文格式  *源端口号：表示发送端端口号，字段长16位。 目的端口：表示接收端端口号，字段长度16位。 序号：字段长32位。序列号是指发送数据的位置。每发送一次数据，就累加一次该数据字节数的大小。序列号不会从0或1开始，而是在建立连接时由计算机生成的随机数作为其初始值通。然后再将每转发过去的字节数累加到初始值上表示数据的位置。例如序号为401，表示第一个字节的编号为 401，如果携带的数据长">
@@ -185,7 +185,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="TCP报文格式"><a href="#TCP报文格式" class="headerlink" title="TCP报文格式"></a>TCP报文格式</h3><img src="55dc4e84-573d-4c13-a765-52ed1dd251f9.png">
+            <h3 id="TCP报文格式"><a href="#TCP报文格式" class="headerlink" title="TCP报文格式"></a>TCP报文格式</h3><img src="55dc4e84-573d-4c13-a765-52ed1dd251f9.png" width="50%">
 
 <p>*<em>源端口号</em>：表示发送端端口号，字段长16位。</p>
 <p><strong>目的端口</strong>：表示接收端端口号，字段长度16位。</p>
@@ -213,7 +213,7 @@
 <p><strong>紧急指针</strong>：只有当 URG 标志置 <em>1</em> 时紧急指针才有效。紧急指针是一个正的偏移量，和顺序号字段中的值相加表示紧急数据最后一个字节的序号。 TCP 的紧急方式是发送端向另一端发送紧急数据的一种方式。</p>
 <p><strong>选项和填充</strong>：最常见的可选字段是最长报文大小，又称为MSS（Maximum Segment Size），每个连接方通常都在通信的第一个报文段（为建立连接而设置SYN标志为1的那个段）中指明这个选项，它表示本端所能接受的最大报文段的长度。选项长度不一定是32位的整数倍，所以要加填充位，即在这个字段中加入额外的零，以保证TCP头是32的整数倍。</p>
 <p><strong>数据部分</strong>： TCP 报文段中的数据部分是可选的。在一个连接建立和一个连接终止时，双方交换的报文段仅有 TCP*首部。如果一方没有数据要发送，也使用没有任何数据的首部来确认收到的数据。在处理超时的许多情况中，也会发送不带任何数据的报文段。</p>
-<h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><img src="e92d0ebc-7d46-413b-aec1-34a39602f787.png">
+<h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><img src="e92d0ebc-7d46-413b-aec1-34a39602f787.png" width="50%">
 
 <p>A 为客户端，B 为服务器端。</p>
 <p><strong>三次握手过程</strong></p>
@@ -237,7 +237,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-05T03:06:03.943Z" itemprop="dateUpdated">2020-04-05 11:06:03</time>
+    最后更新时间：<time datetime="2020-04-05T03:09:54.647Z" itemprop="dateUpdated">2020-04-05 11:09:54</time>
 </span><br>
 
 
