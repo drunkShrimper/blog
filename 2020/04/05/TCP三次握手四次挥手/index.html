@@ -21,21 +21,21 @@
     
     
     <meta name="keywords" content="TCP">
-    <meta name="description" content="TCP报文格式  *源端口号：表示发送端端口号，字段长16位。 目的端口：表示接收端端口号，字段长度16位。 序号：字段长32位。序列号是指发送数据的位置。每发送一次数据，就累加一次该数据字节数的大小。序列号不会从0或1开始，而是在建立连接时由计算机生成的随机数作为其初始值通。然后再将每转发过去的字节数累加到初始值上表示数据的位置。例如序号为401，表示第一个字节的编号为 401，如果携带的数据长">
+    <meta name="description" content="TCP报文格式  源端口号：表示发送端端口号，字段长16位。 目的端口：表示接收端端口号，字段长度16位。 序号：字段长32位。序列号是指发送数据的位置。每发送一次数据，就累加一次该数据字节数的大小。序列号不会从0或1开始，而是在建立连接时由计算机生成的随机数作为其初始值通。然后再将每转发过去的字节数累加到初始值上表示数据的位置。例如序号为401，表示第一个字节的编号为 401，如果携带的数据长度">
 <meta name="keywords" content="TCP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCP三次握手四次挥手">
 <meta property="og:url" content="http://lipan.fun/2020/04/05/TCP三次握手四次挥手/index.html">
 <meta property="og:site_name" content="今天你进步了吗">
-<meta property="og:description" content="TCP报文格式  *源端口号：表示发送端端口号，字段长16位。 目的端口：表示接收端端口号，字段长度16位。 序号：字段长32位。序列号是指发送数据的位置。每发送一次数据，就累加一次该数据字节数的大小。序列号不会从0或1开始，而是在建立连接时由计算机生成的随机数作为其初始值通。然后再将每转发过去的字节数累加到初始值上表示数据的位置。例如序号为401，表示第一个字节的编号为 401，如果携带的数据长">
+<meta property="og:description" content="TCP报文格式  源端口号：表示发送端端口号，字段长16位。 目的端口：表示接收端端口号，字段长度16位。 序号：字段长32位。序列号是指发送数据的位置。每发送一次数据，就累加一次该数据字节数的大小。序列号不会从0或1开始，而是在建立连接时由计算机生成的随机数作为其初始值通。然后再将每转发过去的字节数累加到初始值上表示数据的位置。例如序号为401，表示第一个字节的编号为 401，如果携带的数据长度">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://lipan.fun/2020/04/05/TCP三次握手四次挥手/55dc4e84-573d-4c13-a765-52ed1dd251f9.png">
 <meta property="og:image" content="http://lipan.fun/2020/04/05/TCP三次握手四次挥手/e92d0ebc-7d46-413b-aec1-34a39602f787.png">
 <meta property="og:image" content="http://lipan.fun/2020/04/05/TCP三次握手四次挥手/f87afe72-c2df-4c12-ac03-9b8d581a8af8.jpg">
-<meta property="og:updated_time" content="2020-04-07T02:18:24.691Z">
+<meta property="og:updated_time" content="2020-04-08T03:39:59.980Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP三次握手四次挥手">
-<meta name="twitter:description" content="TCP报文格式  *源端口号：表示发送端端口号，字段长16位。 目的端口：表示接收端端口号，字段长度16位。 序号：字段长32位。序列号是指发送数据的位置。每发送一次数据，就累加一次该数据字节数的大小。序列号不会从0或1开始，而是在建立连接时由计算机生成的随机数作为其初始值通。然后再将每转发过去的字节数累加到初始值上表示数据的位置。例如序号为401，表示第一个字节的编号为 401，如果携带的数据长">
+<meta name="twitter:description" content="TCP报文格式  源端口号：表示发送端端口号，字段长16位。 目的端口：表示接收端端口号，字段长度16位。 序号：字段长32位。序列号是指发送数据的位置。每发送一次数据，就累加一次该数据字节数的大小。序列号不会从0或1开始，而是在建立连接时由计算机生成的随机数作为其初始值通。然后再将每转发过去的字节数累加到初始值上表示数据的位置。例如序号为401，表示第一个字节的编号为 401，如果携带的数据长度">
 <meta name="twitter:image" content="http://lipan.fun/2020/04/05/TCP三次握手四次挥手/55dc4e84-573d-4c13-a765-52ed1dd251f9.png">
     
         <link rel="alternate" type="application/atom+xml" title="今天你进步了吗" href="/atom.xml">
@@ -188,7 +188,7 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <h3 id="TCP报文格式"><a href="#TCP报文格式" class="headerlink" title="TCP报文格式"></a>TCP报文格式</h3><img src="55dc4e84-573d-4c13-a765-52ed1dd251f9.png" width="50%">
 
-<p>*<em>源端口号</em>：表示发送端端口号，字段长16位。</p>
+<p><strong>源端口号</strong>：表示发送端端口号，字段长16位。</p>
 <p><strong>目的端口</strong>：表示接收端端口号，字段长度16位。</p>
 <p><strong>序号</strong>：字段长32位。序列号是指发送数据的位置。每发送一次数据，就累加一次该数据字节数的大小。序列号不会从0或1开始，而是在建立连接时由计算机生成的随机数作为其初始值通。然后再将每转发过去的字节数累加到初始值上表示数据的位置。例如序号为401，表示第一个字节的编号为 401，如果携带的数据长度为 100 字节，那么下一个报文段的序号应为 501。此外，在建立连接和断开连接的时发送的SYN包和FIN包虽然并不携带数据，但是也会作为一个字节增加对应的序列号。</p>
 <p><strong>确认号</strong>：确认应答号字段长度为32位。是指下一次应该收到的数据的序列号。实际上，它是指已收到确认应答号减一为止的数据。发送端接收到这个确认应答号以后可以认为在这个序列号以前的数据都已经被正常接收。</p>
@@ -255,7 +255,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-07T02:18:24.691Z" itemprop="dateUpdated">2020-04-07 10:18:24</time>
+    最后更新时间：<time datetime="2020-04-08T03:39:59.980Z" itemprop="dateUpdated">2020-04-08 11:39:59</time>
 </span><br>
 
 
@@ -330,7 +330,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/04/07/B+Tree与MySQL索引/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">B+Tree与MySQL索引</h4>
+      </a>
+    </div>
   
 
   
