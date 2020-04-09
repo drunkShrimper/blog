@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>生产者与消费者问题的经典实现 | 今天你进步了吗</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Java,多线程,虚假唤醒">
+    <meta name="description" content="问题描述生产者消费者问题，也称有限缓冲问题，是一个多线程同步问题的经典案例。该问题描述了共享固定大小缓冲区的两个线程（或多个）——即“生产者”和“消费者”。 生产者的作用是生成一定量的数据放到缓冲区中，生产者会源源不断的进行生产重复此过程。 消费者在缓冲区中消耗这些数据，而且会源源不断的消费。 此问题的关键就是要保证生产者不会在缓冲区满时加入数据，消费者不会在缓冲区中空时消耗数据。 要解决该问题，">
+<meta name="keywords" content="Java,多线程,虚假唤醒">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生产者与消费者问题的经典实现">
+<meta property="og:url" content="http://lipan.fun/2020/04/09/生产者与消费者问题的经典实现/index.html">
+<meta property="og:site_name" content="今天你进步了吗">
+<meta property="og:description" content="问题描述生产者消费者问题，也称有限缓冲问题，是一个多线程同步问题的经典案例。该问题描述了共享固定大小缓冲区的两个线程（或多个）——即“生产者”和“消费者”。 生产者的作用是生成一定量的数据放到缓冲区中，生产者会源源不断的进行生产重复此过程。 消费者在缓冲区中消耗这些数据，而且会源源不断的消费。 此问题的关键就是要保证生产者不会在缓冲区满时加入数据，消费者不会在缓冲区中空时消耗数据。 要解决该问题，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-09T08:52:31.321Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="生产者与消费者问题的经典实现">
+<meta name="twitter:description" content="问题描述生产者消费者问题，也称有限缓冲问题，是一个多线程同步问题的经典案例。该问题描述了共享固定大小缓冲区的两个线程（或多个）——即“生产者”和“消费者”。 生产者的作用是生成一定量的数据放到缓冲区中，生产者会源源不断的进行生产重复此过程。 消费者在缓冲区中消耗这些数据，而且会源源不断的消费。 此问题的关键就是要保证生产者不会在缓冲区满时加入数据，消费者不会在缓冲区中空时消耗数据。 要解决该问题，">
+    
+        <link rel="alternate" type="application/atom+xml" title="今天你进步了吗" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/morty.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lipan</h5>
+          <a href="mailto:lipan_private@163.com" title="lipan_private@163.com" class="mail">lipan_private@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-book"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间轴
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/drunkShrimper" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resume"  >
+                <i class="icon icon-lg icon-user"></i>
+                简历
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">生产者与消费者问题的经典实现</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">生产者与消费者问题的经典实现</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-04-09T08:06:19.000Z" itemprop="datePublished" class="page-time">
+  2020-04-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/多线程/">多线程</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-生产者与消费者问题的经典实现"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">生产者与消费者问题的经典实现</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-04-09 16:06:19" datetime="2020-04-09T08:06:19.000Z"  itemprop="datePublished">2020-04-09</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/多线程/">多线程</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>生产者消费者问题，也称有限缓冲问题，是一个多线程同步问题的经典案例。该问题描述了<strong>共享固定大小缓冲区</strong>的两个线程（或多个）——即“生产者”和“消费者”。</p>
+<p>生产者的作用是生成一定量的数据放到缓冲区中，生产者会源源不断的进行生产重复此过程。</p>
+<p>消费者在缓冲区中消耗这些数据，而且会源源不断的消费。</p>
+<p>此问题的关键就是要保证生产者不会在缓冲区满时加入数据，消费者不会在缓冲区中空时消耗数据。</p>
+<p>要解决该问题，就必须让生产者在缓冲区满时休眠（wait），等到下次消费者消耗缓冲区中的数据的时候，生产者才能被唤醒（notify），开始往缓冲区添加数据。同理，在缓冲区空时让消费者进入休眠（wait），等到生产者往缓冲区添加数据之后，再唤醒（notify）消费者。</p>
+<p>通常采用进程间通信的方法解决该问题。如果解决方法不够完善，则容易出现死锁的情况。出现死锁时，两个线程都会陷入休眠，等待对方唤醒自己（但是永远也等不到）。</p>
+<h3 id="核心设计"><a href="#核心设计" class="headerlink" title="核心设计"></a>核心设计</h3><p>本次实现采用的是Java线程通信中最经典的wait和notify方式。</p>
+<p><strong>wait</strong></p>
+<p>该方法用来将当前线程置入休眠状态，直到接到通知或被中断为止。但是使用这个方法一定要注意，必须要将其包裹在一个循环内，否则会造成<strong>虚假唤醒</strong>的问题。最终导致死锁。</p>
+<p><strong>虚假唤醒</strong>：当一个条件满足时，很多线程都被唤醒了，但是只有其中部分是有用的唤醒，其它的唤醒都是无用的，甚至是有害的。比如在生产者消费者问题中，假如有3个生产者在wait状态，而此时某个消费者消费了1个数据然后调用了notifyAll，3个在wait状态的生产者如果同时被唤醒，就会同时进行生产，线程同步被破坏了。</p>
+<p>怎么解决呢，我们看看官方文档：</p>
+<p>A thread can also wake up without being notified, interrupted, or timing out, a so-called <em>spurious wakeup</em>. While this will rarely occur in practice, applications must guard against it by testing for the condition that should have caused the thread to be awakened, and continuing to wait if the condition is not satisfied. In other words, waits should always occur in loops, like this one:</p>
+<p>大意是：</p>
+<p>线程可能会在不被通知、中断或超时的情况下唤醒，即所谓的虚假唤醒。虽然这种情况在实际中很少发生，但应用程序必须通过，并在条件不满足时继续等待来防范这种情况。换句话说，等待应该总是以循环的形式出现，就像下面这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">synchronized (obj) &#123;</span><br><span class="line">    while (&lt;condition does not hold&gt;)</span><br><span class="line">    	obj.wait(timeout);</span><br><span class="line">    ... // Perform action appropriate to condition</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>重点：</strong>测试本应导致线程被唤醒的条件（如使用while实现）</p>
+<p><strong>notify</strong></p>
+<p>该方法在同步方法或同步块中调用，<br> 该方法任意从WAITTING状态的线程中挑选一个进行通知，使得调用wait()方法的线程从等待队列移入到同步队列中，等待有机会再一次获取到锁，从而使得调用wait()方法的线程能够从wait()方法处退出。调用notify后，当前线程不会马上释放该对象锁，要等到程序退出同步块后，当前线程才会释放锁。</p>
+<p><strong>notifyAll</strong><br> 该方法与 notify ()方法的工作方式相同，重要的一点差异是：<br> notifyAll 使所有原来在该对象上 wait 的<strong>所有线程均退出WAITTING状态</strong>，使得他们全部从等待队列中移入到同步队列中去，等待下一次能够有机会获取到锁。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Box</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> product = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="number">10</span> &lt;= product) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">": 箱子已满"</span>);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>.wait();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        product++;</span><br><span class="line">        System.out.println(Thread.currentThread().getName() + </span><br><span class="line">                <span class="string">": 生产了1件商品-----目前共有"</span> + product +<span class="string">"件产品"</span>);</span><br><span class="line">        <span class="keyword">this</span>.notifyAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">consume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="number">0</span> == product) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">": 箱子为空"</span>);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>.wait();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        product--;</span><br><span class="line">        System.out.println(Thread.currentThread().getName() + </span><br><span class="line">                <span class="string">": 消费了1件商品-----目前共有"</span> + product +<span class="string">"件产品"</span>);</span><br><span class="line">        <span class="keyword">this</span>.notifyAll();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Productor</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Box box;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Productor</span><span class="params">(Box box)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.box = box;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep((<span class="keyword">int</span>) (Math.random() * <span class="number">100</span> + <span class="number">1</span>));</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            box.add();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Box box;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Consumer</span><span class="params">(Box box)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.box = box;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep((<span class="keyword">int</span>) (Math.random() * <span class="number">105</span> + <span class="number">1</span>));</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            box.consume();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProductorAndConsumerTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Box box = <span class="keyword">new</span> Box();</span><br><span class="line">        <span class="comment">//注意：生产者和消费者要对同一个对象进行操作，即作用于同一个缓冲区</span></span><br><span class="line">        Productor pro = <span class="keyword">new</span> Productor(box);</span><br><span class="line">        Consumer con = <span class="keyword">new</span> Consumer(box);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">new</span> Thread(pro, <span class="string">"生产者"</span> + i).start();</span><br><span class="line">            <span class="keyword">new</span> Thread(con,<span class="string">"消费者"</span> + i).start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-04-09T08:52:31.321Z" itemprop="dateUpdated">2020-04-09 16:52:31</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://lipan.fun">
+            <img src="/img/morty.jpg" alt="lipan">
+            lipan
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/虚假唤醒/">虚假唤醒</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipan.fun/2020/04/09/生产者与消费者问题的经典实现/&title=《生产者与消费者问题的经典实现》 — 今天你进步了吗&pic=http://lipan.fun/img/morty.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipan.fun/2020/04/09/生产者与消费者问题的经典实现/&title=《生产者与消费者问题的经典实现》 — 今天你进步了吗&source=java spring 算法 springboot web" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipan.fun/2020/04/09/生产者与消费者问题的经典实现/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《生产者与消费者问题的经典实现》 — 今天你进步了吗&url=http://lipan.fun/2020/04/09/生产者与消费者问题的经典实现/&via=http://lipan.fun" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipan.fun/2020/04/09/生产者与消费者问题的经典实现/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/04/07/50道sql练习题/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">50道sql练习题</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="comments" id="comments">
+    <div id="giteement-ctn"></div>
+    
+        <link rel="stylesheet" href="/css/gitee.css">
+        <script src="/js/giteement.browser.js"></script>
+    
+    
+    <script>
+    var giteement = new Giteement({
+		id: '20200409160619',
+        owner: 'drunkShrimper',
+        repo: 'blog-comment',
+        backcall_uri: 'https://lipan.fun',
+        oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
+        oauth: {
+        client_id: '50cc1ebe038c970cd39a42973eb8fbbba8d36dae7825175e8b483e5cb42b1ff8',
+        client_secret: '94d17fef3422b646b2635d4c65289345e66cbae0ccf05c6c79c960a4c679e72f'
+    },
+    })
+    giteement.render('giteement-ctn')
+    </script>
+    </section>
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="bottom">
+        <p>
+			<span> 2019 - 2020</span>
+            <span>
+                
+                <a href="http://www.beian.miit.gov.cn/" target="_blank" style="text-decoration:none;">粤ICP备20019675号-1</a>
+                
+            </span>
+			<span>
+				<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44178102001155" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+					<img src="/img/gov.png" style="float:left;"/>
+					&nbsp;粤公网安备 44178102001155号
+				</a>
+			</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipan.fun/2020/04/09/生产者与消费者问题的经典实现/&title=《生产者与消费者问题的经典实现》 — 今天你进步了吗&pic=http://lipan.fun/img/morty.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipan.fun/2020/04/09/生产者与消费者问题的经典实现/&title=《生产者与消费者问题的经典实现》 — 今天你进步了吗&source=java spring 算法 springboot web" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipan.fun/2020/04/09/生产者与消费者问题的经典实现/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《生产者与消费者问题的经典实现》 — 今天你进步了吗&url=http://lipan.fun/2020/04/09/生产者与消费者问题的经典实现/&via=http://lipan.fun" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipan.fun/2020/04/09/生产者与消费者问题的经典实现/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACt0lEQVR42u3aQVLDMAwFUO5/6TLDFpL8L9tQZl5WTNskfl5YQtLHR3y9vq6rT5K/v9/7/Zf555svPDw8vNHSr66rBd1vQf7L/PN79uUK8fDw8I7x2uXmW5BvXMuLNggPDw/vT3ltwGg3Ljn68fDw8P4v7/6V90Hi/tC/Dyp4eHh478ObHcT5t22CPgsbeHh4eL/Daxtg7/D3wf4eHh4e3kJXPbnyAm4+iDBL639YGx4eHt4BXl6uPdfKWvk2Sv3x8PDwtvLaRlSecOdl2XZDi9CCh4eHd5iXD1qttPZnT07AD4EBDw8PbysvbzK1ra+2zdZu+kOSjYeHh3eAl6etbXt+paywqziCh4eHd4LXtrVmr8+HANrhgKg+jYeHh3eYd5/U5ulve+jnYwR5WMLDw8M7x2tbU+2IVX5XW/x9eA4eHh7eMV5ejJi9smj2lyXghz4XHh4e3gFe21KaJdbt0Z8Hp2ib8PDw8LbyWsb60Z8k3G3Bog4JeHh4eHt6T/Vg08pd7b3tENhlMwwPDw9vE28WBlaKrW2bbbZBeHh4eCd4bYKbJ8Ft66vdmujfADw8PLzDvHyJK+FhtmX5bx4mI/Dw8PCWeetliJVhqXyzDoYHPDw8vJK3q+GUPCFPxPMxhYen4eHh4f0ib1ZEaJc+K14UpWE8PDy8A7xZ8jpLlGcDXrs+x8PDw9vFa0uis5HWthm2EmaWKr54eHh4ZaX0XGtqPQVfKfLi4eHh7eW9yit5ZYLc23K7fAIeHh7eAd7swJ29fqVVlo+FzcIJHh4eXsvLg0EbPGaH/mxQ4HKz8PDw8I7xkmCQxJNZIj6MV0kxBQ8PD+9teK+Fa6XBVt+Fh4eH96e8WSI+26AkEY9CCx4eHt4x3spr9i6rLTc8pP54eHh4B3izBthD8TRm58OsLRUPDw/vAO8T6rv5Prm6I7YAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '今天你进步了吗';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '今天你进步了吗';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
