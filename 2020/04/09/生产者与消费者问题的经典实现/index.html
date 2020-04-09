@@ -29,10 +29,12 @@
 <meta property="og:site_name" content="今天你进步了吗">
 <meta property="og:description" content="问题描述生产者消费者问题，也称有限缓冲问题，是一个多线程同步问题的经典案例。该问题描述了共享固定大小缓冲区的两个线程（或多个）——即“生产者”和“消费者”。 生产者的作用是生成一定量的数据放到缓冲区中，生产者会源源不断的进行生产重复此过程。 消费者在缓冲区中消耗这些数据，而且会源源不断的消费。 此问题的关键就是要保证生产者不会在缓冲区满时加入数据，消费者不会在缓冲区中空时消耗数据。 要解决该问题，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-09T08:52:31.321Z">
+<meta property="og:image" content="http://lipan.fun/2020/04/09/生产者与消费者问题的经典实现/1586424454(1).png">
+<meta property="og:updated_time" content="2020-04-09T09:28:09.058Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="生产者与消费者问题的经典实现">
 <meta name="twitter:description" content="问题描述生产者消费者问题，也称有限缓冲问题，是一个多线程同步问题的经典案例。该问题描述了共享固定大小缓冲区的两个线程（或多个）——即“生产者”和“消费者”。 生产者的作用是生成一定量的数据放到缓冲区中，生产者会源源不断的进行生产重复此过程。 消费者在缓冲区中消耗这些数据，而且会源源不断的消费。 此问题的关键就是要保证生产者不会在缓冲区满时加入数据，消费者不会在缓冲区中空时消耗数据。 要解决该问题，">
+<meta name="twitter:image" content="http://lipan.fun/2020/04/09/生产者与消费者问题的经典实现/1586424454(1).png">
     
         <link rel="alternate" type="application/atom+xml" title="今天你进步了吗" href="/atom.xml">
     
@@ -199,6 +201,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">synchronized (obj) &#123;</span><br><span class="line">    while (&lt;condition does not hold&gt;)</span><br><span class="line">    	obj.wait(timeout);</span><br><span class="line">    ... // Perform action appropriate to condition</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>重点：</strong>测试本应导致线程被唤醒的条件（如使用while实现）</p>
+<p><strong>这样做的结果是，在wait状态的线程被notify后，即使能够被唤醒，接下来还要进行while语句的条件判断，而不是直接执行被唤醒后的代码逻辑。</strong></p>
+<img src="1586424454(1).png">
+
 <p><strong>notify</strong></p>
 <p>该方法在同步方法或同步块中调用，<br> 该方法任意从WAITTING状态的线程中挑选一个进行通知，使得调用wait()方法的线程从等待队列移入到同步队列中，等待有机会再一次获取到锁，从而使得调用wait()方法的线程能够从wait()方法处退出。调用notify后，当前线程不会马上释放该对象锁，要等到程序退出同步块后，当前线程才会释放锁。</p>
 <p><strong>notifyAll</strong><br> 该方法与 notify ()方法的工作方式相同，重要的一点差异是：<br> notifyAll 使所有原来在该对象上 wait 的<strong>所有线程均退出WAITTING状态</strong>，使得他们全部从等待队列中移入到同步队列中去，等待下一次能够有机会获取到锁。</p>
@@ -218,7 +223,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-09T08:52:31.321Z" itemprop="dateUpdated">2020-04-09 16:52:31</time>
+    最后更新时间：<time datetime="2020-04-09T09:28:09.058Z" itemprop="dateUpdated">2020-04-09 17:28:09</time>
 </span><br>
 
 
